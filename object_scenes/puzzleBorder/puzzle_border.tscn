@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccsyqv7aop0lt"]
+
+[ext_resource type="Script" uid="uid://bqq67xvtsfimf" path="res://object_scenes/puzzleBorder/puzzle_border.gd" id="1_nltgh"]
+[ext_resource type="Texture2D" uid="uid://cwqiwj4otepwj" path="res://object_scenes/puzzleBorder/mask.png" id="1_pgbl8"]
+[ext_resource type="Texture2D" uid="uid://daw80uvr2rih7" path="res://object_scenes/puzzleBorder/door1.png" id="2_nltgh"]
+[ext_resource type="Texture2D" uid="uid://dejfma02kwscx" path="res://object_scenes/puzzleBorder/door2.png" id="3_v0scw"]
+[ext_resource type="Texture2D" uid="uid://b3igxp6bxktpq" path="res://object_scenes/puzzleBorder/blackBorder.png" id="4_c3wmi"]
+[ext_resource type="Texture2D" uid="uid://ld3eoycdh6hr" path="res://object_scenes/puzzleBorder/lid.png" id="5_kvcoa"]
+[ext_resource type="Texture2D" uid="uid://b2nv831om5aps" path="res://object_scenes/puzzleBorder/puzzleBackground.png" id="7_v0scw"]
+
+[node name="puzzleBorder" type="Node2D"]
+script = ExtResource("1_nltgh")
+
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("1_pgbl8")
+centered = false
+
+[node name="Door1" type="Sprite2D" parent="Mask"]
+position = Vector2(-100, 0)
+texture = ExtResource("2_nltgh")
+centered = false
+
+[node name="Door2" type="Sprite2D" parent="Mask"]
+position = Vector2(100, 0)
+texture = ExtResource("3_v0scw")
+centered = false
+
+[node name="BlackBorder" type="Sprite2D" parent="."]
+texture = ExtResource("4_c3wmi")
+centered = false
+
+[node name="Lid" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(75, 75)
+texture = ExtResource("5_kvcoa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 875
+offset_right = 150.0
+offset_bottom = 150.0
+color = Color(1, 1, 1, 0)
+
+[node name="PuzzleBackground" type="Sprite2D" parent="."]
+z_index = -20
+texture = ExtResource("7_v0scw")
+centered = false
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://kgxyixcv352a"]
+
+[ext_resource type="Script" uid="uid://b6we5r0diqcyr" path="res://object_scenes/puzzles/word_spell_puzzle.gd" id="1_6p4ny"]
+
+[node name="WordSpellPuzzle" type="Node2D"]
+script = ExtResource("1_6p4ny")
+metadata/_custom_type_script = "uid://upsjslom8kcg"
+
+[node name="word" type="Label" parent="."]
+offset_top = 11.0
+offset_right = 150.0
+offset_bottom = 35.0
+text = "WORD"
+horizontal_alignment = 1
+
+[node name="preview" type="Label" parent="."]
+modulate = Color(0.30588236, 1, 0.43137255, 1)
+offset_top = 39.0
+offset_right = 150.0
+offset_bottom = 66.0
+horizontal_alignment = 1
+
+[node name="buttons" type="Node2D" parent="."]
+position = Vector2(21, 78)
+
+[node name="colorRects" type="Node2D" parent="."]
+position = Vector2(12, 69)

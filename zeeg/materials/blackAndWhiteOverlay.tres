@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cbm8v6p8jq4xe"]
+
+[ext_resource type="Shader" uid="uid://bsoh4o3y77odq" path="res://zeeg/shaders/blackAndWhiteOverlay.gdshader" id="1_4qea4"]
+
+[resource]
+shader = ExtResource("1_4qea4")

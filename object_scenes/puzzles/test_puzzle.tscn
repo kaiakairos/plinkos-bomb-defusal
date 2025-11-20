@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy733n5kjbm4h"]
+
+[ext_resource type="Script" uid="uid://08mtgbpussi6" path="res://object_scenes/puzzles/test_puzzle.gd" id="1_vnkyr"]
+
+[node name="testPuzzle" type="Node2D"]
+script = ExtResource("1_vnkyr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 49.242935
+offset_top = 54.746563
+offset_right = 89.242935
+offset_bottom = 94.74657
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.344967
+offset_top = 2.6069794
+offset_right = 44.344967
+offset_bottom = 25.60698
+text = "4"
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

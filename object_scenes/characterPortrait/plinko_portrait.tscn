@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://wb2uss21ih6c"]
+
+[ext_resource type="Texture2D" uid="uid://dj7alla2j4tmp" path="res://object_scenes/characterPortrait/placeholder.png" id="1_fpso6"]
+[ext_resource type="Texture2D" uid="uid://b0evbyjh5rgps" path="res://object_scenes/characterPortrait/burnt.png" id="1_wrhk2"]
+[ext_resource type="Script" uid="uid://b3c621vjg6vnr" path="res://object_scenes/characterPortrait/plinko_portrait.gd" id="3_rlh83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjwn"]
+atlas = ExtResource("1_wrhk2")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxuhb"]
+atlas = ExtResource("1_wrhk2")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3tjb"]
+atlas = ExtResource("1_wrhk2")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7dex"]
+atlas = ExtResource("1_fpso6")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrhk2"]
+atlas = ExtResource("1_fpso6")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlh83"]
+atlas = ExtResource("1_fpso6")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8fjwn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxuhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3tjb")
+}],
+"loop": true,
+"name": &"burnt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7dex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrhk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlh83")
+}],
+"loop": true,
+"name": &"placeholder",
+"speed": 5.0
+}]
+
+[node name="PlinkoPortrait" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8fjwn")
+animation = &"placeholder"
+autoplay = "placeholder"
+frame_progress = 0.3864574
+script = ExtResource("3_rlh83")
