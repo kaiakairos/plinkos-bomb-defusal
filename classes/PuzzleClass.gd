@@ -7,6 +7,8 @@ var puzzleEnabled :bool = false
 
 var rand :RandomNumberGenerator
 
+var game :GameScreen
+
 func enablePuzzle() -> void:
 	puzzleEnabled = true
 	print("puzzleEnabled!")

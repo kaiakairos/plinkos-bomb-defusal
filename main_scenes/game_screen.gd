@@ -1,10 +1,12 @@
 extends Node2D
+class_name GameScreen
 
 var puzzles :Array[String] = [
 	#"res://object_scenes/puzzles/test_puzzle.tscn",
 	"res://object_scenes/puzzles/pattern_match.tscn",
 	"res://object_scenes/puzzles/word_spell_puzzle.tscn",
 	"res://object_scenes/puzzles/dial_puzzle.tscn",
+	"res://object_scenes/puzzles/color_match_puzzle.tscn"
 	
 ]
 
@@ -25,15 +27,24 @@ func _ready() -> void:
 
 func generatePuzzles(randomSeed:int) -> void:
 	randomGenerator.seed = randomSeed
+	var puzzlesAdded :Array[String] = []
 	for i in range(4):
 		var r :int = randomGenerator.randi() % puzzles.size()
-		var ins :Puzzle = load(puzzles[r]).instantiate()
+		var s :String = puzzles[r]
+		var cycles :int = 0 # limit amount of cycles so we don't get stuck for too long here
+		while( puzzlesAdded.has(s) and cycles < 8 ):
+			r  = randomGenerator.randi() % puzzles.size()
+			s  = puzzles[r]
+			cycles += 1
+		var ins :Puzzle = load(s).instantiate()
 		ins.position.x = (i % 2) * 150
 		ins.position.y = (i / 2) * 150
 		ins.puzzleID = i
 		ins.connect("puzzleComplete",puzzleWon)
 		ins.rand = randomGenerator
+		ins.game = self
 		$puzzles.add_child(ins)
+		puzzlesAdded.append(puzzles[r])
 
 func connectLids() -> void:
 	for border in $borders.get_children():

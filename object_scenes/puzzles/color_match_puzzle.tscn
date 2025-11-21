@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://bng1vpbw3uaqy"]
+
+[ext_resource type="Script" uid="uid://d3tg0mbkurhjr" path="res://object_scenes/puzzles/color_match_puzzle.gd" id="1_1f0n4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6eg5g"]
+line_spacing = 12.865
+
+[node name="ColorMatchPuzzle" type="Node2D"]
+script = ExtResource("1_1f0n4")
+
+[node name="increaseRed" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 42.0
+offset_right = 90.0
+offset_bottom = 73.0
+text = "+"
+
+[node name="decreaseRed" type="Button" parent="."]
+offset_left = 34.0
+offset_top = 42.0
+offset_right = 52.0
+offset_bottom = 73.0
+text = "-"
+
+[node name="increaseGreen" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 77.0
+offset_right = 90.0
+offset_bottom = 108.0
+text = "+"
+
+[node name="decreaseGreen" type="Button" parent="."]
+offset_left = 34.0
+offset_top = 77.0
+offset_right = 52.0
+offset_bottom = 108.0
+text = "-"
+
+[node name="increaseBlue" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 111.0
+offset_right = 90.0
+offset_bottom = 142.0
+text = "+"
+
+[node name="decreaseBlue" type="Button" parent="."]
+offset_left = 34.0
+offset_top = 111.0
+offset_right = 52.0
+offset_bottom = 142.0
+text = "-"
+
+[node name="targetColor" type="ColorRect" parent="."]
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 64.0
+offset_bottom = 31.0
+
+[node name="currentColor" type="ColorRect" parent="."]
+offset_left = 82.0
+offset_top = 9.0
+offset_right = 138.0
+offset_bottom = 31.0
+
+[node name="values" type="Label" parent="."]
+offset_left = 57.0
+offset_top = 45.0
+offset_right = 97.0
+offset_bottom = 138.0
+text = "1
+2
+3"
+label_settings = SubResource("LabelSettings_6eg5g")
+
+[node name="values2" type="Label" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0.18431373)
+offset_left = 116.0
+offset_top = 46.0
+offset_right = 156.0
+offset_bottom = 139.0
+text = "(1)
+(2)
+(3)"
+label_settings = SubResource("LabelSettings_6eg5g")
+
+[node name="erm" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 46.0
+offset_right = 55.0
+offset_bottom = 139.0
+text = "R
+G
+B"
+label_settings = SubResource("LabelSettings_6eg5g")
+
+[connection signal="pressed" from="increaseRed" to="." method="_on_increase_red_pressed"]
+[connection signal="pressed" from="decreaseRed" to="." method="_on_decrease_red_pressed"]
+[connection signal="pressed" from="increaseGreen" to="." method="_on_increase_green_pressed"]
+[connection signal="pressed" from="decreaseGreen" to="." method="_on_decrease_green_pressed"]
+[connection signal="pressed" from="increaseBlue" to="." method="_on_increase_blue_pressed"]
+[connection signal="pressed" from="decreaseBlue" to="." method="_on_decrease_blue_pressed"]
