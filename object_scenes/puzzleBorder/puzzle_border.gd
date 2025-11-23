@@ -50,8 +50,17 @@ func disablePuzzle() -> void:
 	tween.tween_property($Mask/Door2,"position:x",0.0,0.2)
 	await tween.finished
 	
-	for i in range(10):
-		$Mask.position.x = randi_range(-1,1)
-		$Mask.position.y = randi_range(-1,1)
+	for i in range(6):
+		$Mask/Door1.position.x = randi_range(-3,3)
+		$Mask/Door1.position.y = randi_range(-3,2)
+		$Mask/Door2.position.x = $Mask/Door1.position.x
+		$Mask/Door2.position.y =$Mask/Door1.position.y
 		await get_tree().process_frame
-	$Mask.position = Vector2.ZERO
+	for i in range(10):
+		$Mask/Door1.position.x = randi_range(-1,1)
+		$Mask/Door1.position.y = randi_range(-1,1)
+		$Mask/Door2.position.x = $Mask/Door1.position.x
+		$Mask/Door2.position.y =$Mask/Door1.position.y
+		await get_tree().process_frame
+	$Mask/Door1.position = Vector2.ZERO
+	$Mask/Door2.position = Vector2.ZERO

@@ -10,6 +10,8 @@ var words :Array[String] = ["shelf","meats","death","arbor","tubes","dials","pea
 
 var alphabet :String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+@export var gradient :Gradient
+
 func _ready() -> void:
 	
 	$word.text = words[rand.randi() % words.size()].to_upper()
@@ -32,12 +34,24 @@ func _ready() -> void:
 		rect.color.a = 0.0
 		rect.connect("gui_input",_on_color_rect_gui_input)
 		$colorRects.add_child(rect)
-
+func _process(delta: float) -> void:
+	$word.modulate = gradient.sample(1.0 - (game.timer - float(int(game.timer))))
+	$type.modulate = gradient.sample(1.0 - (((game.timer * 2.0) - float(int(game.timer * 2.0)) ) )  )
+	$type.modulate.a *= 0.8
+	$preview.scale = lerp($preview.scale,Vector2(1.0,1.0),0.2)
 
 func appendLetter(index:int) -> void:
 	$preview.text = $preview.text + alphabet[index]
+	$preview.scale = Vector2(1.25,1.25)
+	
 	if $preview.text != $word.text.left($preview.text.length()):
 		$preview.text = ""
+	
+	$type.position.x = 80.0 +  ($preview.label_settings.font.get_string_size( $preview.text ).x / 2.0)
+	if $preview.text == "":
+		$type.position.x = 77.0
+	
+	
 	if $preview.text == $word.text:
 		winPuzzle()
 

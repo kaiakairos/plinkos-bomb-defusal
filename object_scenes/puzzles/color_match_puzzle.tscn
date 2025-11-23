@@ -1,97 +1,193 @@
-[gd_scene load_steps=3 format=3 uid="uid://bng1vpbw3uaqy"]
+[gd_scene load_steps=8 format=3 uid="uid://bng1vpbw3uaqy"]
 
 [ext_resource type="Script" uid="uid://d3tg0mbkurhjr" path="res://object_scenes/puzzles/color_match_puzzle.gd" id="1_1f0n4"]
+[ext_resource type="Material" uid="uid://dqej36cicegbv" path="res://zeeg/materials/colorShade.tres" id="2_feqd2"]
+[ext_resource type="FontFile" uid="uid://ctoy5thdlt8eg" path="res://zeeg/fonts/Aquarius-RegularMono.ttf" id="2_p4f1r"]
+[ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="3_att7x"]
+[ext_resource type="Texture2D" uid="uid://oruciwkm3ji6" path="res://object_scenes/puzzles/puzzleAssets/pattern.png" id="3_fbm6g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_feqd2"]
+font = ExtResource("2_p4f1r")
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_6eg5g"]
-line_spacing = 12.865
+line_spacing = 9.0
+font = ExtResource("2_p4f1r")
+font_size = 8
 
 [node name="ColorMatchPuzzle" type="Node2D"]
 script = ExtResource("1_1f0n4")
 
 [node name="increaseRed" type="Button" parent="."]
-offset_left = 72.0
-offset_top = 42.0
-offset_right = 90.0
-offset_bottom = 73.0
-text = "+"
+offset_left = 101.0
+offset_top = 72.0
+offset_right = 119.0
+offset_bottom = 90.0
 
 [node name="decreaseRed" type="Button" parent="."]
-offset_left = 34.0
-offset_top = 42.0
-offset_right = 52.0
-offset_bottom = 73.0
-text = "-"
+offset_left = 29.0
+offset_top = 72.0
+offset_right = 47.0
+offset_bottom = 90.0
 
 [node name="increaseGreen" type="Button" parent="."]
-offset_left = 72.0
-offset_top = 77.0
-offset_right = 90.0
-offset_bottom = 108.0
-text = "+"
+offset_left = 101.0
+offset_top = 94.0
+offset_right = 119.0
+offset_bottom = 112.0
 
 [node name="decreaseGreen" type="Button" parent="."]
-offset_left = 34.0
-offset_top = 77.0
-offset_right = 52.0
-offset_bottom = 108.0
-text = "-"
+offset_left = 29.0
+offset_top = 94.0
+offset_right = 47.0
+offset_bottom = 112.0
 
 [node name="increaseBlue" type="Button" parent="."]
-offset_left = 72.0
-offset_top = 111.0
-offset_right = 90.0
-offset_bottom = 142.0
-text = "+"
+offset_left = 101.0
+offset_top = 116.0
+offset_right = 119.0
+offset_bottom = 134.0
 
 [node name="decreaseBlue" type="Button" parent="."]
-offset_left = 34.0
-offset_top = 111.0
-offset_right = 52.0
-offset_bottom = 142.0
-text = "-"
+offset_left = 29.0
+offset_top = 116.0
+offset_right = 47.0
+offset_bottom = 134.0
 
 [node name="targetColor" type="ColorRect" parent="."]
-offset_left = 11.0
+offset_left = 9.0
 offset_top = 9.0
-offset_right = 64.0
-offset_bottom = 31.0
+offset_right = 66.0
+offset_bottom = 58.0
 
 [node name="currentColor" type="ColorRect" parent="."]
-offset_left = 82.0
-offset_top = 9.0
-offset_right = 138.0
-offset_bottom = 31.0
+offset_left = 84.0
+offset_top = 11.0
+offset_right = 141.0
+offset_bottom = 58.0
+color = Color(0.34117648, 0.60784316, 0.34117648, 1)
+
+[node name="Pattern" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_feqd2")
+position = Vector2(112.5, 33.5)
+scale = Vector2(1.78125, 1.53125)
+texture = ExtResource("3_fbm6g")
+
+[node name="Pattern2" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = ExtResource("2_feqd2")
+position = Vector2(38, 34)
+scale = Vector2(1.78125, 1.53125)
+texture = ExtResource("3_fbm6g")
+
+[node name="Numba" type="Node2D" parent="."]
+position = Vector2(52, 72)
+
+[node name="ColorRect" type="ColorRect" parent="Numba"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 43.0
+offset_bottom = 16.0
+color = Color(0.10980392, 0, 0, 1)
+
+[node name="zeros" type="Label" parent="Numba"]
+modulate = Color(0.50980395, 0, 0, 0.30980393)
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 26.0
+text = "00000"
+label_settings = SubResource("LabelSettings_feqd2")
+
+[node name="RECT2" parent="Numba" instance=ExtResource("3_att7x")]
+offset_right = 45.0
+offset_bottom = 18.0
+
+[node name="Numba2" type="Node2D" parent="."]
+position = Vector2(52, 94)
+
+[node name="ColorRect" type="ColorRect" parent="Numba2"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 43.0
+offset_bottom = 16.0
+color = Color(0.10980392, 0, 0, 1)
+
+[node name="zeros" type="Label" parent="Numba2"]
+modulate = Color(0.50980395, 0, 0, 0.30980393)
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 26.0
+text = "00000"
+label_settings = SubResource("LabelSettings_feqd2")
+
+[node name="RECT2" parent="Numba2" instance=ExtResource("3_att7x")]
+offset_right = 45.0
+offset_bottom = 18.0
+
+[node name="Numba3" type="Node2D" parent="."]
+position = Vector2(52, 116)
+
+[node name="ColorRect" type="ColorRect" parent="Numba3"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 43.0
+offset_bottom = 16.0
+color = Color(0.10980392, 0, 0, 1)
+
+[node name="zeros" type="Label" parent="Numba3"]
+modulate = Color(0.50980395, 0, 0, 0.30980393)
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 26.0
+text = "00000"
+label_settings = SubResource("LabelSettings_feqd2")
+
+[node name="RECT2" parent="Numba3" instance=ExtResource("3_att7x")]
+offset_right = 45.0
+offset_bottom = 18.0
 
 [node name="values" type="Label" parent="."]
-offset_left = 57.0
-offset_top = 45.0
-offset_right = 97.0
-offset_bottom = 138.0
+offset_left = 55.0
+offset_top = 75.0
+offset_right = 93.0
+offset_bottom = 132.0
+text = "R 000
+G 050
+B 100"
+label_settings = SubResource("LabelSettings_6eg5g")
+horizontal_alignment = 2
+
+[node name="RECT" parent="." instance=ExtResource("3_att7x")]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 68.0
+offset_bottom = 60.0
+
+[node name="RECT2" parent="." instance=ExtResource("3_att7x")]
+offset_left = 82.0
+offset_top = 8.0
+offset_right = 142.0
+offset_bottom = 60.0
+
+[node name="RECT3" parent="." instance=ExtResource("3_att7x")]
+offset_left = 23.0
+offset_top = 66.0
+offset_right = 125.0
+offset_bottom = 140.0
+
+[node name="values2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 0.40392157)
+offset_left = 132.0
+offset_top = 75.0
+offset_right = 172.0
+offset_bottom = 168.0
 text = "1
 2
 3"
-label_settings = SubResource("LabelSettings_6eg5g")
-
-[node name="values2" type="Label" parent="."]
-visible = false
-modulate = Color(0, 0, 0, 0.18431373)
-offset_left = 116.0
-offset_top = 46.0
-offset_right = 156.0
-offset_bottom = 139.0
-text = "(1)
-(2)
-(3)"
-label_settings = SubResource("LabelSettings_6eg5g")
-
-[node name="erm" type="Label" parent="."]
-offset_left = 15.0
-offset_top = 46.0
-offset_right = 55.0
-offset_bottom = 139.0
-text = "R
-G
-B"
 label_settings = SubResource("LabelSettings_6eg5g")
 
 [connection signal="pressed" from="increaseRed" to="." method="_on_increase_red_pressed"]

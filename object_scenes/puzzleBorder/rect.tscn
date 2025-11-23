@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0oirhkrxbsyw"]
+
+[ext_resource type="Texture2D" uid="uid://bdme4f70li5o" path="res://object_scenes/puzzleBorder/nineRect.png" id="1_5ltca"]
+
+[node name="RECT" type="NinePatchRect"]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_5ltca")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8

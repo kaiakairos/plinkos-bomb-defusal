@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dqej36cicegbv"]
+
+[ext_resource type="Shader" uid="uid://dhwpsyfbr8v4f" path="res://zeeg/shaders/scroll.gdshader" id="1_4erly"]
+
+[resource]
+shader = ExtResource("1_4erly")
+shader_parameter/shade = Color(1, 1, 1, 0.13333334)
+shader_parameter/speed = 0.61

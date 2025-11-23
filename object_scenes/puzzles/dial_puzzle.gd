@@ -11,6 +11,7 @@ func _ready() -> void:
 	$current.text = "%.1f" % number
 	
 	$dial/base.rotation = lerp_angle($dial/base.rotation, -source,1.0)
+	
 
 func _process(delta: float) -> void:
 	if !grabbing:
@@ -26,6 +27,9 @@ func _process(delta: float) -> void:
 	var before :float = $dial/base.rotation
 	$dial/base.rotation = lerp_angle($dial/base.rotation,mousePos.angle() - source,1.0)
 	$dial/DialTop.rotation = $dial/base.rotation
+	$dial/shade.rotation = $dial/base.rotation
+	$dial/base/DialShadow.rotation = $dial/base.rotation * -1
+	
 	number -= (before - $dial/base.rotation) * 0.5
 	$current.text = "%.1f" % number
 

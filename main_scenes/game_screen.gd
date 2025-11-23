@@ -20,6 +20,7 @@ var randomGenerator :RandomNumberGenerator = RandomNumberGenerator.new()
 var lost :bool = false
 var explosionRange :float = 0.0
 
+@export var gradient :Gradient
 
 func _ready() -> void:
 	connectLids()
@@ -51,6 +52,8 @@ func connectLids() -> void:
 		border.connect("opened",lidOpened)
 
 func lidOpened(lid:PuzzleBorder):
+	if !timerTicking:
+		$Music.play()
 	timerTicking = true
 	$puzzles.get_child(lid.id).enablePuzzle()
 
@@ -61,7 +64,12 @@ func _process(delta: float) -> void:
 		print(explosionRange)
 		position.x = randf_range(-1.0,1.0) * explosionRange
 		explosionRange = lerp(explosionRange,0.0,0.008)
-
+	
+	$TimerBar/ColorRect/timeProgress.modulate = gradient.sample(1.0 - (timer - float(int(timer))))
+	$TimerBar/ColorRect/timeProgress.position.y = 146.0 - (timer * (146.0 / 20.0))
+	$TimerBar/NinePatchRect/flash.modulate.a =  (timer - float(int(timer))) * 0.7
+	$TimerBar/NinePatchRect/flash.position.y = -8 +  146.0 - (timer * (146.0 / 20.0))
+	
 func tickTimer(delta:float) -> void:
 	timer -= delta
 	if timer < 0.0:
@@ -71,6 +79,7 @@ func tickTimer(delta:float) -> void:
 	var labelText :String = "%.2f" % timer
 	if timer < 10.0:
 		labelText = "0" + labelText
+	labelText = labelText.left(5)
 	$Timer.text = labelText
 
 func puzzleWon(puzzleScene:Puzzle) -> void:
@@ -96,6 +105,12 @@ func lose() -> void:
 	
 
 func win() -> void:
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property($Music,"pitch_scale",0.01,1.0)
+	await tween.finished
+	$Music.stop()
+	
 	await get_tree().create_timer(1.0).timeout
 	$Menu.show()
 

@@ -1,16 +1,52 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxbqgn7tvgbgb"]
+[gd_scene load_steps=16 format=3 uid="uid://cxbqgn7tvgbgb"]
 
 [ext_resource type="PackedScene" uid="uid://wb2uss21ih6c" path="res://object_scenes/characterPortrait/plinko_portrait.tscn" id="1_722st"]
 [ext_resource type="Script" uid="uid://bk4ki04k44xye" path="res://main_scenes/game_screen.gd" id="1_xjvs2"]
 [ext_resource type="PackedScene" uid="uid://ccsyqv7aop0lt" path="res://object_scenes/puzzleBorder/puzzle_border.tscn" id="3_47l54"]
 [ext_resource type="Texture2D" uid="uid://bxtinwaep42d0" path="res://object_scenes/characterPortrait/portraitBorder.png" id="3_wtygs"]
 [ext_resource type="Material" uid="uid://cbm8v6p8jq4xe" path="res://zeeg/materials/blackAndWhiteOverlay.tres" id="5_mpptv"]
+[ext_resource type="FontFile" uid="uid://bg7pvd0nrl0s5" path="res://zeeg/fonts/digital-7.mono.ttf" id="6_mujpq"]
 [ext_resource type="Texture2D" uid="uid://ojky1wou3wkx" path="res://icon.svg" id="6_sv2iu"]
+[ext_resource type="Shader" uid="uid://cgfwcuyjat2op" path="res://zeeg/shaders/gameBackground.gdshader" id="7_ro42q"]
+[ext_resource type="Texture2D" uid="uid://3o8qb36jv2if" path="res://main_scenes/background.png" id="8_146sx"]
+[ext_resource type="Texture2D" uid="uid://dlot1gwxk8ysb" path="res://object_scenes/puzzleBorder/bigNineRect.png" id="9_146sx"]
+[ext_resource type="Texture2D" uid="uid://bkwtcdyoqcxqo" path="res://main_scenes/lifeFlash.png" id="11_6d7kj"]
+[ext_resource type="AudioStream" uid="uid://buejta4g3jhb4" path="res://sounds/music/20 secs.ogg" id="12_2q7n1"]
+
+[sub_resource type="Gradient" id="Gradient_146sx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.6784314)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mujpq"]
+shader = ExtResource("7_ro42q")
+shader_parameter/shade = Color(0.13932121, 0.11855679, 0.11076885, 0.07058824)
+shader_parameter/speed = 0.04
+
+[sub_resource type="LabelSettings" id="LabelSettings_6d7kj"]
+font = ExtResource("6_mujpq")
+font_size = 27
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_xjvs2")
+gradient = SubResource("Gradient_146sx")
+
+[node name="grey" type="ColorRect" parent="."]
+z_index = -3435
+offset_right = 400.0
+offset_bottom = 300.0
+mouse_filter = 2
+color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2270
+texture_filter = 2
+texture_repeat = 2
+material = SubResource("ShaderMaterial_mujpq")
+position = Vector2(199.99998, 150)
+scale = Vector2(1.0000001, 0.75)
+texture = ExtResource("8_146sx")
 
 [node name="BlackStripBackground" type="ColorRect" parent="."]
+z_index = -20
 offset_left = 300.0
 offset_right = 400.0
 offset_bottom = 300.0
@@ -22,12 +58,22 @@ position = Vector2(349, 51)
 [node name="PortraitBorder" type="Sprite2D" parent="PlinkoPortrait"]
 texture = ExtResource("3_wtygs")
 
+[node name="Timer2" type="Label" parent="."]
+modulate = Color(0.2968607, 0, 0, 1)
+offset_left = 319.0
+offset_top = 110.0
+offset_right = 380.0
+offset_bottom = 133.0
+text = "00.00"
+label_settings = SubResource("LabelSettings_6d7kj")
+
 [node name="Timer" type="Label" parent="."]
-offset_left = 328.0
-offset_top = 107.0
-offset_right = 369.0
-offset_bottom = 130.0
+offset_left = 319.0
+offset_top = 110.0
+offset_right = 380.0
+offset_bottom = 133.0
 text = "20.00"
+label_settings = SubResource("LabelSettings_6d7kj")
 
 [node name="puzzles" type="Node2D" parent="."]
 
@@ -87,6 +133,64 @@ offset_top = 226.0
 offset_right = 260.0
 offset_bottom = 257.0
 text = "quit"
+
+[node name="TimerBar" type="Node2D" parent="."]
+position = Vector2(304, 155)
+
+[node name="ColorRect" type="ColorRect" parent="TimerBar"]
+clip_children = 2
+offset_top = -8.0
+offset_right = 91.0
+offset_bottom = 140.0
+color = Color(0.0619267, 0.0619267, 0.061926693, 1)
+
+[node name="timeProgress" type="ColorRect" parent="TimerBar/ColorRect"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 366.0
+color = Color(1, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TimerBar"]
+clip_children = 2
+offset_left = -5.0
+offset_top = -13.0
+offset_right = 95.0
+offset_bottom = 145.0
+texture = ExtResource("9_146sx")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="flash" type="Sprite2D" parent="TimerBar/NinePatchRect"]
+modulate = Color(1, 0.1764706, 0.18431373, 1)
+texture_filter = 2
+position = Vector2(-6.9999814, -6)
+scale = Vector2(0.575, 0.4325)
+texture = ExtResource("11_6d7kj")
+centered = false
+
+[node name="ColorRect2" type="ColorRect" parent="TimerBar"]
+z_index = -2
+offset_left = 1.0
+offset_top = -49.0
+offset_right = 88.0
+offset_bottom = -20.0
+color = Color(0.10980392, 0, 0, 1)
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="TimerBar"]
+offset_left = -5.0
+offset_top = -54.0
+offset_right = 95.0
+offset_bottom = -14.0
+texture = ExtResource("9_146sx")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_2q7n1")
 
 [connection signal="pressed" from="Menu/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Menu/quit" to="." method="_on_quit_pressed"]
