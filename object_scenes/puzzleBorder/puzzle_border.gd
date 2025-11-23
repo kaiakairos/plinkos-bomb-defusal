@@ -41,6 +41,7 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 	lidVelocity.x = randf_range(-200.0,200.0)
 	lidRotationVel = randf_range(-4.0,4.0)
 	$Lid.modulate.a = 0.5
+	$Lid.z_index = 11
 
 func disablePuzzle() -> void:
 	$ColorRect.show()
