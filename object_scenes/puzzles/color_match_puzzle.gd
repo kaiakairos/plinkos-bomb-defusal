@@ -65,7 +65,9 @@ func _process(delta: float) -> void:
 	$values2.visible = game.timer < 5.0
 
 func onButtonPressed(decreased:bool = false) -> void:
-	pass
+	$Click.pitch_scale = 1.0 + randf_range(-0.1,0.1)
+	$Click.position = get_local_mouse_position()
+	$Click.play()
 
 func _on_increase_red_pressed() -> void:
 	r += 1

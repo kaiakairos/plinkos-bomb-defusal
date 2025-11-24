@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccsyqv7aop0lt"]
+[gd_scene load_steps=9 format=3 uid="uid://ccsyqv7aop0lt"]
 
 [ext_resource type="Script" uid="uid://bqq67xvtsfimf" path="res://object_scenes/puzzleBorder/puzzle_border.gd" id="1_nltgh"]
 [ext_resource type="Texture2D" uid="uid://cwqiwj4otepwj" path="res://object_scenes/puzzleBorder/mask.png" id="1_pgbl8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3igxp6bxktpq" path="res://object_scenes/puzzleBorder/blackBorder.png" id="4_c3wmi"]
 [ext_resource type="Texture2D" uid="uid://ld3eoycdh6hr" path="res://object_scenes/puzzleBorder/lid.png" id="5_kvcoa"]
 [ext_resource type="Texture2D" uid="uid://b2nv831om5aps" path="res://object_scenes/puzzleBorder/puzzleBackground.png" id="7_v0scw"]
+[ext_resource type="AudioStream" uid="uid://ocmmvilacskp" path="res://sounds/sfx/popLid.ogg" id="8_c3wmi"]
 
 [node name="puzzleBorder" type="Node2D"]
 script = ExtResource("1_nltgh")
@@ -45,5 +46,12 @@ color = Color(1, 1, 1, 0)
 z_index = -20
 texture = ExtResource("7_v0scw")
 centered = false
+
+[node name="PopLid" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(74, 74)
+stream = ExtResource("8_c3wmi")
+volume_db = 8.0
+pitch_scale = 1.33
+bus = &"SFX"
 
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

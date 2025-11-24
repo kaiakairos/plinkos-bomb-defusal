@@ -54,6 +54,7 @@ func connectLids() -> void:
 func lidOpened(lid:PuzzleBorder):
 	if !timerTicking:
 		$Music.play()
+		anims()
 	timerTicking = true
 	$puzzles.get_child(lid.id).enablePuzzle()
 
@@ -81,6 +82,22 @@ func tickTimer(delta:float) -> void:
 		labelText = "0" + labelText
 	labelText = labelText.left(5)
 	$Timer.text = labelText
+	
+
+func anims():
+	$PlinkoPortrait.setAnim("work1")
+	await get_tree().create_timer(8.0).timeout
+	if !timerTicking:
+		return
+	$PlinkoPortrait.setAnim("work2")
+	await get_tree().create_timer(8.0).timeout
+	if !timerTicking:
+		return
+	$PlinkoPortrait.setAnim("work3")
+	await get_tree().create_timer(3.0).timeout
+	if !timerTicking:
+		return
+	$PlinkoPortrait.setAnim("work4")
 
 func puzzleWon(puzzleScene:Puzzle) -> void:
 	puzzlesWon += 1
@@ -97,11 +114,15 @@ func lose() -> void:
 	$ExplosionEffect.show()
 	$PlinkoPortrait.setAnim("burnt")
 	explosionRange = 2.0
+	
+	$Explosion.play()
+	
 	await get_tree().create_timer(1.0).timeout
 	var tween = get_tree().create_tween()
 	tween.tween_property($ExplosionEffect/ColorRect,"color:a",0.0,4.0)
 	await get_tree().create_timer(4.0).timeout
 	$Menu.show()
+	$DeadMusic.play()
 	
 
 func win() -> void:

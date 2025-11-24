@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://kgxyixcv352a"]
+[gd_scene load_steps=9 format=3 uid="uid://kgxyixcv352a"]
 
 [ext_resource type="Script" uid="uid://b6we5r0diqcyr" path="res://object_scenes/puzzles/word_spell_puzzle.gd" id="1_6p4ny"]
 [ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="2_a1bb8"]
 [ext_resource type="FontFile" uid="uid://df8hkltroprxg" path="res://zeeg/fonts/blockblueprint.medium.ttf" id="3_k3s3i"]
+[ext_resource type="AudioStream" uid="uid://jbj7y0f8nksd" path="res://sounds/sfx/click.ogg" id="4_k3s3i"]
+[ext_resource type="AudioStream" uid="uid://ba20tycnluoyq" path="res://sounds/sfx/error.ogg" id="5_qd8mi"]
 
 [sub_resource type="Gradient" id="Gradient_a1bb8"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.24313726)
@@ -91,3 +93,17 @@ offset_top = 43.0
 offset_right = 78.0
 offset_bottom = 51.0
 color = Color(0, 1, 0, 1)
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(77, 90)
+stream = ExtResource("4_k3s3i")
+volume_db = 6.0
+max_polyphony = 3
+bus = &"SFX"
+
+[node name="Error" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(78, 21)
+stream = ExtResource("5_qd8mi")
+volume_db = 2.0
+max_polyphony = 3
+bus = &"SFX"

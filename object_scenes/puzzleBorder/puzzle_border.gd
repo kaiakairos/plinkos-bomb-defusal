@@ -11,6 +11,7 @@ var lidRotationVel :float = 0.0
 
 func _ready() -> void:
 	set_process(false)
+	$PopLid.pitch_scale = 1.33 + randf_range(-0.04,0.2)
 
 func _process(delta: float) -> void:
 	
@@ -34,6 +35,7 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 	
 	enabled = true
 	emit_signal("opened",self)
+	$PopLid.play()
 	$ColorRect.hide()
 	set_process(true)
 	

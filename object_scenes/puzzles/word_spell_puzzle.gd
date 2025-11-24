@@ -44,13 +44,21 @@ func appendLetter(index:int) -> void:
 	$preview.text = $preview.text + alphabet[index]
 	$preview.scale = Vector2(1.25,1.25)
 	
-	if $preview.text != $word.text.left($preview.text.length()):
+	
+	
+	if $preview.text != $word.text.left($preview.text.length()): # incorrect letter selected
 		$preview.text = ""
+		$Error.play()
 	
 	$type.position.x = 80.0 +  ($preview.label_settings.font.get_string_size( $preview.text ).x / 2.0)
 	if $preview.text == "":
 		$type.position.x = 77.0
 	
+	var pitchBase :float = 1.0
+	pitchBase = (($preview.text.length() - 1.0) * 0.05) + 1.0
+	$Click.position = get_local_mouse_position()
+	$Click.pitch_scale = pitchBase + randf_range(-0.1,0.1)
+	$Click.play()
 	
 	if $preview.text == $word.text:
 		winPuzzle()

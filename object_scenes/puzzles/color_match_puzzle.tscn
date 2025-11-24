@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bng1vpbw3uaqy"]
+[gd_scene load_steps=9 format=3 uid="uid://bng1vpbw3uaqy"]
 
 [ext_resource type="Script" uid="uid://d3tg0mbkurhjr" path="res://object_scenes/puzzles/color_match_puzzle.gd" id="1_1f0n4"]
 [ext_resource type="Material" uid="uid://dqej36cicegbv" path="res://zeeg/materials/colorShade.tres" id="2_feqd2"]
 [ext_resource type="FontFile" uid="uid://ctoy5thdlt8eg" path="res://zeeg/fonts/Aquarius-RegularMono.ttf" id="2_p4f1r"]
 [ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="3_att7x"]
 [ext_resource type="Texture2D" uid="uid://oruciwkm3ji6" path="res://object_scenes/puzzles/puzzleAssets/pattern.png" id="3_fbm6g"]
+[ext_resource type="AudioStream" uid="uid://jbj7y0f8nksd" path="res://sounds/sfx/click.ogg" id="6_fbm6g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_feqd2"]
 font = ExtResource("2_p4f1r")
@@ -189,6 +190,12 @@ text = "1
 2
 3"
 label_settings = SubResource("LabelSettings_6eg5g")
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_fbm6g")
+volume_db = 6.0
+max_polyphony = 3
+bus = &"SFX"
 
 [connection signal="pressed" from="increaseRed" to="." method="_on_increase_red_pressed"]
 [connection signal="pressed" from="decreaseRed" to="." method="_on_decrease_red_pressed"]

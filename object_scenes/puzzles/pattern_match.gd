@@ -34,6 +34,9 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 	button.frame = abs(button.frame - 1)
 	button.scale = Vector2(0.8,0.8)
 	checkIfButtonWin()
+	$Click.position = get_local_mouse_position()
+	$Click.pitch_scale = 1.0 + randf_range(-0.1,0.1)
+	$Click.play()
 
 func checkIfButtonWin() -> void:
 	

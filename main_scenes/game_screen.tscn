@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxbqgn7tvgbgb"]
+[gd_scene load_steps=18 format=3 uid="uid://cxbqgn7tvgbgb"]
 
 [ext_resource type="PackedScene" uid="uid://wb2uss21ih6c" path="res://object_scenes/characterPortrait/plinko_portrait.tscn" id="1_722st"]
 [ext_resource type="Script" uid="uid://bk4ki04k44xye" path="res://main_scenes/game_screen.gd" id="1_xjvs2"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://3o8qb36jv2if" path="res://main_scenes/background.png" id="8_146sx"]
 [ext_resource type="Texture2D" uid="uid://dlot1gwxk8ysb" path="res://object_scenes/puzzleBorder/bigNineRect.png" id="9_146sx"]
 [ext_resource type="Texture2D" uid="uid://bkwtcdyoqcxqo" path="res://main_scenes/lifeFlash.png" id="11_6d7kj"]
-[ext_resource type="AudioStream" uid="uid://buejta4g3jhb4" path="res://sounds/music/20 secs.ogg" id="12_2q7n1"]
+[ext_resource type="AudioStream" uid="uid://du0adss6ea7kx" path="res://sounds/music/Ticking.ogg" id="12_2q7n1"]
+[ext_resource type="AudioStream" uid="uid://bpfldgiysqqj3" path="res://sounds/music/Dead.ogg" id="13_ju84a"]
+[ext_resource type="AudioStream" uid="uid://c8dp8mlner47g" path="res://sounds/sfx/explosion.ogg" id="14_vwj7j"]
 
 [sub_resource type="Gradient" id="Gradient_146sx"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.6784314)
@@ -191,6 +193,15 @@ patch_margin_bottom = 16
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_2q7n1")
+bus = &"MUSIC"
+
+[node name="DeadMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ju84a")
+bus = &"MUSIC"
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_vwj7j")
+volume_db = -4.0
 
 [connection signal="pressed" from="Menu/retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Menu/quit" to="." method="_on_quit_pressed"]

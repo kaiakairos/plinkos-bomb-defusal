@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmiq5l364dcm"]
+[gd_scene load_steps=9 format=3 uid="uid://cmiq5l364dcm"]
 
 [ext_resource type="Script" uid="uid://b7k6cwpfdgane" path="res://object_scenes/puzzles/dial_puzzle.gd" id="1_6hnct"]
 [ext_resource type="Texture2D" uid="uid://dkvi33oehaavm" path="res://object_scenes/puzzles/puzzleAssets/dial.png" id="1_e28by"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ltm7ms0nej41" path="res://object_scenes/puzzles/puzzleAssets/dialTop.png" id="3_pvaf0"]
 [ext_resource type="FontFile" uid="uid://ctoy5thdlt8eg" path="res://zeeg/fonts/Aquarius-RegularMono.ttf" id="5_pckyx"]
 [ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="5_pvaf0"]
+[ext_resource type="AudioStream" uid="uid://p21u3rw8apyk" path="res://sounds/sfx/dialTick.ogg" id="7_mx0fe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mx0fe"]
 font = ExtResource("5_pckyx")
@@ -123,5 +124,11 @@ offset_left = 52.0
 offset_top = 123.0
 offset_right = 97.0
 offset_bottom = 141.0
+
+[node name="DialTick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(75, 73)
+stream = ExtResource("7_mx0fe")
+pitch_scale = 0.6
+bus = &"SFX"
 
 [connection signal="gui_input" from="dialSelector" to="." method="_on_dial_selector_gui_input"]
