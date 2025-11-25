@@ -1,12 +1,14 @@
 extends Puzzle
 
-var words :Array[String] = ["shelf","meats","death","arbor","tubes","dials","peach","chain",
+var  words  :  Array[String] = ["shelf","meats","death","arbor","tubes","dials","peach","chain",
 "crane","audio","sheet","nylon","nasty","feels","fleet","steal","bumps","phone","cramp","stamp",
 "quick","taste","paste","brain","nails","fails","chain","plane","plain","match","spell","trail",
 "trial","loved","waver","maker","water","paper","faker","label","table","chump","hater","house",
 "leave","clean","fuzzy","wafer","gizmo","think","swing","toads","float","worms","flare","flail",
 "steam","cheap","fumes","light","balls","haven","votes","books","error","eerie","speak","omega",
-"shirt","phage","donut"]
+"shirt","phage","donut","court","apple","queen","zippy","drink","valor","forks","shade","order",
+"ready","typed","words","agent","great","pacer","shout","hound","dough","trash","roast","fleas",
+"bleak","treat","plead"]
 
 var alphabet :String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

@@ -11,7 +11,9 @@ var lidRotationVel :float = 0.0
 
 func _ready() -> void:
 	set_process(false)
-	$PopLid.pitch_scale = 1.33 + randf_range(-0.04,0.2)
+	$PopLid.pitch_scale = 1.33 + randf_range(-0.1,0.1)
+	$Closing.pitch_scale = 1.0 + randf_range(-0.1,0.1)
+	$Closed.pitch_scale = 1.0 + randf_range(-0.1,0.1)
 
 func _process(delta: float) -> void:
 	
@@ -51,7 +53,10 @@ func disablePuzzle() -> void:
 	tween.set_parallel(true)
 	tween.tween_property($Mask/Door1,"position:x",0.0,0.2)
 	tween.tween_property($Mask/Door2,"position:x",0.0,0.2)
+	$Closing.play()
 	await tween.finished
+	
+	$Closed.play()
 	
 	for i in range(6):
 		$Mask/Door1.position.x = randi_range(-3,3)

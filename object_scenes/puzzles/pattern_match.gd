@@ -30,6 +30,10 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 	
 	var mousePos :Vector2 = $Buttons.get_local_mouse_position()
 	var buttonIndex :int = (int(mousePos.x) / 32) + ((int(mousePos.y) / 32) * 4)
+	
+	if buttonIndex < 0 or buttonIndex >= 8:
+		return # this should never happen, but i got a crash where it DID so just in case catch this
+	
 	var button :Sprite2D = $Buttons.get_child(buttonIndex)
 	button.frame = abs(button.frame - 1)
 	button.scale = Vector2(0.8,0.8)

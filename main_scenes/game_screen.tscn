@@ -120,7 +120,7 @@ offset_left = -19.0
 offset_top = -15.0
 offset_right = 421.0
 offset_bottom = 319.0
-color = Color(0, 0, 0, 0.972549)
+color = Color(0, 0, 0, 0.8627451)
 
 [node name="retry" type="Button" parent="Menu"]
 offset_left = 162.0

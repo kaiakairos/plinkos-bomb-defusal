@@ -62,7 +62,7 @@ func updateColors() -> void:
 		winPuzzle()
 
 func _process(delta: float) -> void:
-	$values2.visible = game.timer < 5.0
+	$values2.visible = game.timer < 2.0
 
 func onButtonPressed(decreased:bool = false) -> void:
 	$Click.pitch_scale = 1.0 + randf_range(-0.1,0.1)
