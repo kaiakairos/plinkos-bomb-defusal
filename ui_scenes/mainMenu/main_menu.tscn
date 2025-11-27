@@ -1,0 +1,183 @@
+[gd_scene load_steps=17 format=3 uid="uid://ssqlqyxyg6na"]
+
+[ext_resource type="Script" uid="uid://ccmwg4b8ti5nq" path="res://ui_scenes/mainMenu/main_menu.gd" id="1_2tnkl"]
+[ext_resource type="PackedScene" uid="uid://sil4wu7p2ua3" path="res://ui_scenes/fancyButton/fancy_button.tscn" id="1_rvujo"]
+[ext_resource type="AudioStream" uid="uid://bpfldgiysqqj3" path="res://sounds/music/Dead.ogg" id="3_20wqv"]
+[ext_resource type="Texture2D" uid="uid://didu0gg75h1vo" path="res://ui_scenes/mainMenu/guy.png" id="4_sx3h0"]
+[ext_resource type="Texture2D" uid="uid://bej8c2vdmhvpa" path="res://ui_scenes/mainMenu/light.png" id="5_jpla1"]
+[ext_resource type="Texture2D" uid="uid://cqa0em5eldvfi" path="res://ui_scenes/mainMenu/normal.png" id="5_rv34e"]
+[ext_resource type="Texture2D" uid="uid://tay6rxtjat51" path="res://ui_scenes/mainMenu/lamp.png" id="7_rv34e"]
+[ext_resource type="FontFile" uid="uid://df8hkltroprxg" path="res://zeeg/fonts/blockblueprint.medium.ttf" id="8_r5kf2"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jpla1"]
+polygon = PackedVector2Array(125, 190, 102, 232, -311, 226, -314, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpla1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rv34e"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sx3h0"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sx3h0"]
+polygon = PackedVector2Array(-60, 142, -2, 143, -4, 145, -55, 145)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_r5kf2"]
+diffuse_texture = ExtResource("4_sx3h0")
+normal_texture = ExtResource("5_rv34e")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rv34e"]
+polygon = PackedVector2Array(15, 164, 15, 167, 44, 169, 51, 162, 38, 165)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5v0ay"]
+font = ExtResource("8_r5kf2")
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_2tnkl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 400.0
+offset_bottom = 300.0
+color = Color(0.03137255, 0.023529412, 0.023529412, 1)
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2(30, 156)
+
+[node name="play" parent="Buttons" instance=ExtResource("1_rvujo")]
+buttonText = "PLAY GAME"
+
+[node name="daily" parent="Buttons" instance=ExtResource("1_rvujo")]
+position = Vector2(0, 32)
+buttonText = "DAILY PUZZLE"
+
+[node name="credits" parent="Buttons" instance=ExtResource("1_rvujo")]
+position = Vector2(0, 64)
+buttonText = "CREDITS"
+
+[node name="quit" parent="Buttons" instance=ExtResource("1_rvujo")]
+position = Vector2(0, 96)
+buttonText = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_20wqv")
+volume_db = 3.0
+pitch_scale = 1.72
+autoplay = true
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+position = Vector2(300, 83)
+occluder = SubResource("OccluderPolygon2D_jpla1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(303, -11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_jpla1")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(303, -11)
+rotation = 0.42105028
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("RigidBody2D")
+softness = 16.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="PinJoint2D"]
+position = Vector2(0, 110)
+physics_material_override = SubResource("PhysicsMaterial_rv34e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/RigidBody2D"]
+shape = SubResource("CircleShape2D_sx3h0")
+
+[node name="PointLight2D" type="PointLight2D" parent="PinJoint2D/RigidBody2D"]
+texture_filter = 1
+position = Vector2(0, -4)
+color = Color(1, 1, 0.8, 1)
+energy = 0.55
+shadow_enabled = true
+texture = ExtResource("5_jpla1")
+offset = Vector2(0, 140.8)
+texture_scale = 0.55
+height = 30.0
+
+[node name="Line2D" type="Line2D" parent="PinJoint2D/RigidBody2D"]
+position = Vector2(0, -110)
+points = PackedVector2Array(0, 105, 0, -99)
+width = 2.98
+default_color = Color(0, 0, 0, 1)
+
+[node name="Lamp" type="Sprite2D" parent="PinJoint2D/RigidBody2D"]
+position = Vector2(0, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_rv34e")
+
+[node name="thing" type="Node2D" parent="."]
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="thing"]
+position = Vector2(300, 83)
+occluder = SubResource("OccluderPolygon2D_sx3h0")
+
+[node name="Guy" type="Sprite2D" parent="thing"]
+position = Vector2(306, 190)
+texture = SubResource("CanvasTexture_r5kf2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="thing"]
+position = Vector2(300, 83)
+occluder = SubResource("OccluderPolygon2D_rv34e")
+
+[node name="credits" type="Node2D" parent="."]
+position = Vector2(400, 0)
+
+[node name="Label" type="Label" parent="credits"]
+offset_left = -6.0
+offset_top = 22.0
+offset_right = 245.0
+offset_bottom = 302.0
+text = "Plinko's Bomb Defusal
+
+
+
+
+
+
+
+made for the MCCGDC Fall Jam 
+and the 20 Second Jam 2025
+
+sounds sampled from
+Freesound.org and Titanfall"
+label_settings = SubResource("LabelSettings_5v0ay")
+horizontal_alignment = 1
+
+[node name="kaiaCredit" parent="credits" instance=ExtResource("1_rvujo")]
+modulate = Color(1, 0.91764706, 0.23137255, 1)
+position = Vector2(52, 69)
+buttonText = "kaiakairos - author"
+
+[node name="sageCredit" parent="credits" instance=ExtResource("1_rvujo")]
+modulate = Color(1, 0.91764706, 0.23137255, 1)
+position = Vector2(35, 115)
+buttonText = "staggernight - musician"
+
+[node name="jamLink" parent="credits" instance=ExtResource("1_rvujo")]
+modulate = Color(1, 0.91764706, 0.23137255, 1)
+position = Vector2(107, 166)
+buttonText = "MCCGDC Fall Jam"
+
+[node name="jamLink2" parent="credits" instance=ExtResource("1_rvujo")]
+modulate = Color(1, 0.91764706, 0.23137255, 1)
+position = Vector2(79, 184)
+buttonText = "20 Second Jam 2025"
+
+[node name="credit back" parent="credits" instance=ExtResource("1_rvujo")]
+position = Vector2(189, 270)
+buttonText = "BACK"
+
+[connection signal="buttonPressed" from="Buttons/play" to="." method="_on_play_button_pressed"]
+[connection signal="buttonPressed" from="Buttons/daily" to="." method="_on_daily_button_pressed"]
+[connection signal="buttonPressed" from="Buttons/credits" to="." method="_on_credits_button_pressed"]
+[connection signal="buttonPressed" from="Buttons/quit" to="." method="_on_quit_button_pressed"]
+[connection signal="buttonPressed" from="credits/kaiaCredit" to="." method="_on_kaia_credit_button_pressed"]
+[connection signal="buttonPressed" from="credits/sageCredit" to="." method="_on_sage_credit_button_pressed"]
+[connection signal="buttonPressed" from="credits/jamLink" to="." method="_on_jam_link_button_pressed"]
+[connection signal="buttonPressed" from="credits/jamLink2" to="." method="_on_jam_link_2_button_pressed"]
+[connection signal="buttonPressed" from="credits/credit back" to="." method="_on_credit_back_button_pressed"]

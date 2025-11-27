@@ -34,6 +34,8 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		return
 	if !event.pressed:
 		return
+	if SceneTransitioner.screenTransitioning:
+		return # don't open until screen transition is finished
 	
 	enabled = true
 	emit_signal("opened",self)

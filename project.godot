@@ -11,12 +11,20 @@ config_version=5
 [application]
 
 config/name="Plinko's bomb defusal"
-run/main_scene="uid://cxbqgn7tvgbgb"
+run/main_scene="uid://ssqlqyxyg6na"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=120
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://autoload/Global.gd"
+SceneTransitioner="*res://autoload/SceneTransitioner.gd"
+Saving="*res://autoload/Saving.gd"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/integer_division=0
 
 [display]
@@ -26,6 +34,7 @@ window/size/viewport_height=300
 window/size/window_width_override=800
 window/size/window_height_override=600
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [file_customization]
 
@@ -35,6 +44,7 @@ folder_colors={
 "res://main_scenes/": "yellow",
 "res://object_scenes/": "green",
 "res://sounds/": "blue",
+"res://ui_scenes/": "pink",
 "res://zeeg/": "gray"
 }
 

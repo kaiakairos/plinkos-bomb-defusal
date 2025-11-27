@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxbqgn7tvgbgb"]
+[gd_scene load_steps=19 format=3 uid="uid://cxbqgn7tvgbgb"]
 
 [ext_resource type="PackedScene" uid="uid://wb2uss21ih6c" path="res://object_scenes/characterPortrait/plinko_portrait.tscn" id="1_722st"]
 [ext_resource type="Script" uid="uid://bk4ki04k44xye" path="res://main_scenes/game_screen.gd" id="1_xjvs2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://cgfwcuyjat2op" path="res://zeeg/shaders/gameBackground.gdshader" id="7_ro42q"]
 [ext_resource type="Texture2D" uid="uid://3o8qb36jv2if" path="res://main_scenes/background.png" id="8_146sx"]
 [ext_resource type="Texture2D" uid="uid://dlot1gwxk8ysb" path="res://object_scenes/puzzleBorder/bigNineRect.png" id="9_146sx"]
+[ext_resource type="PackedScene" uid="uid://sil4wu7p2ua3" path="res://ui_scenes/fancyButton/fancy_button.tscn" id="10_7xdoo"]
 [ext_resource type="Texture2D" uid="uid://bkwtcdyoqcxqo" path="res://main_scenes/lifeFlash.png" id="11_6d7kj"]
 [ext_resource type="AudioStream" uid="uid://du0adss6ea7kx" path="res://sounds/music/Ticking.ogg" id="12_2q7n1"]
 [ext_resource type="AudioStream" uid="uid://bpfldgiysqqj3" path="res://sounds/music/Dead.ogg" id="13_ju84a"]
@@ -122,19 +123,17 @@ offset_right = 421.0
 offset_bottom = 319.0
 color = Color(0, 0, 0, 0.8627451)
 
-[node name="retry" type="Button" parent="Menu"]
-offset_left = 162.0
-offset_top = 166.0
-offset_right = 260.0
-offset_bottom = 197.0
-text = "try again"
+[node name="retry" parent="Menu" instance=ExtResource("10_7xdoo")]
+position = Vector2(20, 207)
+buttonText = "RETRY"
 
-[node name="quit" type="Button" parent="Menu"]
-offset_left = 162.0
-offset_top = 226.0
-offset_right = 260.0
-offset_bottom = 257.0
-text = "quit"
+[node name="backToMenu" parent="Menu" instance=ExtResource("10_7xdoo")]
+position = Vector2(20, 238)
+buttonText = "BACK TO MENU"
+
+[node name="quit" parent="Menu" instance=ExtResource("10_7xdoo")]
+position = Vector2(20, 269)
+buttonText = "QUIT GAME"
 
 [node name="TimerBar" type="Node2D" parent="."]
 position = Vector2(304, 155)
@@ -197,11 +196,13 @@ bus = &"MUSIC"
 
 [node name="DeadMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_ju84a")
+volume_db = 7.0
 bus = &"MUSIC"
 
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_vwj7j")
-volume_db = -4.0
+volume_db = -6.5
 
-[connection signal="pressed" from="Menu/retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="Menu/quit" to="." method="_on_quit_pressed"]
+[connection signal="buttonPressed" from="Menu/retry" to="." method="_on_retry_button_pressed"]
+[connection signal="buttonPressed" from="Menu/backToMenu" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="buttonPressed" from="Menu/quit" to="." method="_on_quit_button_pressed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://wb2uss21ih6c"]
+[gd_scene load_steps=36 format=3 uid="uid://wb2uss21ih6c"]
 
 [ext_resource type="Texture2D" uid="uid://dj7alla2j4tmp" path="res://object_scenes/characterPortrait/placeholder.png" id="1_fpso6"]
 [ext_resource type="Texture2D" uid="uid://b0evbyjh5rgps" path="res://object_scenes/characterPortrait/burnt.png" id="1_wrhk2"]
 [ext_resource type="Texture2D" uid="uid://coal33keh6ut3" path="res://object_scenes/characterPortrait/plinko.png" id="3_8fjwn"]
 [ext_resource type="Script" uid="uid://b3c621vjg6vnr" path="res://object_scenes/characterPortrait/plinko_portrait.gd" id="3_rlh83"]
+[ext_resource type="Texture2D" uid="uid://dwgwtdtwy88g8" path="res://object_scenes/characterPortrait/winner.png" id="4_8fjwn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fjwn"]
 atlas = ExtResource("1_wrhk2")
@@ -48,6 +49,14 @@ region = Rect2(300, 0, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_g310a"]
 atlas = ExtResource("3_8fjwn")
 region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6u6h"]
+atlas = ExtResource("4_8fjwn")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h5n8"]
+atlas = ExtResource("4_8fjwn")
+region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkex4"]
 atlas = ExtResource("3_8fjwn")
@@ -161,6 +170,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_b6u6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h5n8")
+}],
+"loop": true,
+"name": &"win",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dkex4")
 }, {
 "duration": 1.0,
@@ -231,9 +251,9 @@ colors = PackedColorArray(0.9882353, 0, 0, 1, 0, 0, 0, 1)
 
 [node name="PlinkoPortrait" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_8fjwn")
-animation = &"burnt"
+animation = &"win"
 autoplay = "preparing"
-frame_progress = 0.35939646
+frame_progress = 0.4367093
 script = ExtResource("3_rlh83")
 gradient = SubResource("Gradient_rlh83")
 

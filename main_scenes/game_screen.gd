@@ -24,7 +24,10 @@ var explosionRange :float = 0.0
 
 func _ready() -> void:
 	connectLids()
-	generatePuzzles(randi())
+	var coolNewSeed :int = randi()
+	if Global.setSeed != 0:
+		coolNewSeed = Global.setSeed
+	generatePuzzles(coolNewSeed)
 
 func generatePuzzles(randomSeed:int) -> void:
 	randomGenerator.seed = randomSeed
@@ -127,6 +130,9 @@ func lose() -> void:
 
 func win() -> void:
 	
+	
+	$PlinkoPortrait.setAnim("win")
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property($Music,"pitch_scale",0.01,1.0)
 	await tween.finished
@@ -135,9 +141,12 @@ func win() -> void:
 	await get_tree().create_timer(1.0).timeout
 	$Menu.show()
 
-func _on_quit_pressed() -> void:
+
+func _on_retry_button_pressed() -> void:
+	SceneTransitioner.transitionScene("res://main_scenes/game_screen.tscn")
+
+func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
-
-func _on_retry_pressed() -> void:
-	get_tree().reload_current_scene()
+func _on_back_to_menu_button_pressed() -> void:
+	SceneTransitioner.transitionScene("res://ui_scenes/mainMenu/main_menu.tscn")
