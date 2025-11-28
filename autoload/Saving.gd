@@ -1,8 +1,8 @@
 extends Node
 
-const SAVEFILEEXTENSION :String = ".plinkodefusesave"
+const SAVEFILEEXTENSION :String = ".pbdsave"
 
-func read_save(key) -> Dictionary: # make sure to check for empty dictionary, which means the read save failed
+func read_save(key:String) -> Dictionary: # make sure to check for empty dictionary, which means the read save failed
 	if OS.has_feature('web'):
 		var JSONstr = JavaScriptBridge.eval("window.localStorage.getItem('" + key + "');")
 		if (JSONstr):
@@ -22,7 +22,7 @@ func read_save(key) -> Dictionary: # make sure to check for empty dictionary, wh
 		file.close()
 		return newData
 
-func write_save(key,data) -> void:
+func write_save(key:String,data:Dictionary) -> void:
 	if OS.has_feature('web'):
 		JavaScriptBridge.eval("window.localStorage.setItem('" + key + "', '" + JSON.stringify(data) + "');")
 	else:
@@ -30,7 +30,7 @@ func write_save(key,data) -> void:
 		file.store_line(JSON.stringify(data,"\t"))
 		file.close()
 
-func erase_save(key) -> void:
+func erase_save(key:String) -> void:
 	
 	if OS.has_feature('web'):
 		var JSONstr = JavaScriptBridge.eval("window.localStorage.getItem('" + key + "');")
@@ -46,7 +46,7 @@ func erase_save(key) -> void:
 		var dir = DirAccess.open("user://")
 		dir.remove(key + SAVEFILEEXTENSION)
 
-func has_save(key) -> bool:
+func has_save(key:String) -> bool:
 	if OS.has_feature('web'):
 		var JSONstr = JavaScriptBridge.eval("window.localStorage.getItem('" + key + "');")
 		return (JSONstr)
@@ -56,7 +56,7 @@ func has_save(key) -> bool:
 			return false
 		return true
 
-func downloadsave(key) -> bool:
+func downloadsave(key:String) -> bool:
 	if OS.has_feature('web'):
 		var data = read_save(key)
 		JavaScriptBridge.download_buffer( var_to_bytes(JSON.stringify(data)), key + SAVEFILEEXTENSION )
@@ -64,5 +64,5 @@ func downloadsave(key) -> bool:
 	return false
 
 
-func open_site(url) -> void:
+func open_site(url:String) -> void:
 	OS.shell_open(url)

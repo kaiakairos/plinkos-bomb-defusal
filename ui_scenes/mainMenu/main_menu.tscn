@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ssqlqyxyg6na"]
+[gd_scene load_steps=18 format=3 uid="uid://ssqlqyxyg6na"]
 
 [ext_resource type="Script" uid="uid://ccmwg4b8ti5nq" path="res://ui_scenes/mainMenu/main_menu.gd" id="1_2tnkl"]
 [ext_resource type="PackedScene" uid="uid://sil4wu7p2ua3" path="res://ui_scenes/fancyButton/fancy_button.tscn" id="1_rvujo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cqa0em5eldvfi" path="res://ui_scenes/mainMenu/normal.png" id="5_rv34e"]
 [ext_resource type="Texture2D" uid="uid://tay6rxtjat51" path="res://ui_scenes/mainMenu/lamp.png" id="7_rv34e"]
 [ext_resource type="FontFile" uid="uid://df8hkltroprxg" path="res://zeeg/fonts/blockblueprint.medium.ttf" id="8_r5kf2"]
+[ext_resource type="Texture2D" uid="uid://dowikpxb8cjb1" path="res://ui_scenes/mainMenu/logo.png" id="9_5v0ay"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jpla1"]
 polygon = PackedVector2Array(125, 190, 102, 232, -311, 226, -314, 190)
@@ -171,6 +172,11 @@ buttonText = "20 Second Jam 2025"
 [node name="credit back" parent="credits" instance=ExtResource("1_rvujo")]
 position = Vector2(189, 270)
 buttonText = "BACK"
+
+[node name="Logo" type="Sprite2D" parent="."]
+modulate = Color(1, 0.91764706, 0.23137255, 1)
+position = Vector2(104, 78)
+texture = ExtResource("9_5v0ay")
 
 [connection signal="buttonPressed" from="Buttons/play" to="." method="_on_play_button_pressed"]
 [connection signal="buttonPressed" from="Buttons/daily" to="." method="_on_daily_button_pressed"]

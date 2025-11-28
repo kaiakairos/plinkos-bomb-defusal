@@ -22,6 +22,8 @@ var randomGenerator :RandomNumberGenerator = RandomNumberGenerator.new()
 var lost :bool = false
 var explosionRange :float = 0.0
 
+var clicks :int = 1
+
 @export var gradient :Gradient
 
 func _ready() -> void:
@@ -64,17 +66,26 @@ func lidOpened(lid:PuzzleBorder):
 	$puzzles.get_child(lid.id).enablePuzzle()
 
 func _process(delta: float) -> void:
+	
+	
 	if timerTicking:
 		tickTimer(delta)
+		if Input.is_action_just_pressed("mouse_left"):
+			clicks += 1
+	
 	if lost:
-		print(explosionRange)
 		position.x = randf_range(-1.0,1.0) * explosionRange
-		explosionRange = lerp(explosionRange,0.0,0.008)
+		position.y = randf_range(-1.0,1.0) * explosionRange
+		explosionRange = move_toward(explosionRange,0.0,0.4 * delta)
 	
 	$TimerBar/ColorRect/timeProgress.modulate = gradient.sample(1.0 - (timer - float(int(timer))))
 	$TimerBar/ColorRect/timeProgress.position.y = 146.0 - (timer * (146.0 / 20.0))
 	$TimerBar/NinePatchRect/flash.modulate.a =  (timer - float(int(timer))) * 0.7
 	$TimerBar/NinePatchRect/flash.position.y = -8 +  146.0 - (timer * (146.0 / 20.0))
+	
+	var i :float = sin( Time.get_ticks_msec()  * 0.02) * 0.02
+	$Menu/NewRecord.scale = Vector2(i + 0.9,i + 0.9)
+	$Menu/NewRecord.rotation = (sin( Time.get_ticks_msec()  * 0.01) * 0.04) + -0.25
 	
 func tickTimer(delta:float) -> void:
 	timer -= delta
@@ -145,6 +156,53 @@ func win() -> void:
 	
 	await get_tree().create_timer(1.0).timeout
 	$Menu.show()
+	
+	$Menu/Label.show()
+	
+	#var labelText :String = "%.2f" % (20.0 - timer)
+	#if (20.0 - timer) < 10.0:
+	#	labelText = "0" + labelText
+	#labelText = labelText.left(5)
+	
+	$Menu/Label2.text = "TIME REMAINING: " + $Timer.text + "\nCLICKS: " +  str(clicks)
+	
+	$Menu/Label2.show()
+	
+	$WinMusic.play()
+	
+	if timer > Global.personalRecord and Global.setSeed == 0:
+		$Menu/NewRecord.show()
+		Global.personalRecord = timer
+	
+	if Global.setSeed == 0:
+		# regular high score
+		var labelText2 :String = "%.2f" % Global.personalRecord
+		if Global.personalRecord < 10.0:
+			labelText2 = "0" + labelText2
+		labelText2 = labelText2.left(5)
+		
+		$Menu/Label3.text = "high score: " + labelText2 + " remaining"
+		
+	else:
+		# daily high score
+		if Global.lastDayPlayed != Global.setSeed:
+			Global.lastDayPlayed = Global.setSeed
+			Global.bestDayTime = 0.0
+		
+		if timer > Global.bestDayTime:
+			$Menu/NewRecord.show()
+			Global.bestDayTime = timer
+		
+		var labelText2 :String = "%.2f" % Global.bestDayTime
+		if Global.bestDayTime < 10.0:
+			labelText2 = "0" + labelText2
+		labelText2 = labelText2.left(5)
+		
+		$Menu/Label3.text = "best score today: " + labelText2 + " remaining"
+	
+	$Menu/Label3.show()
+	
+	Global.save()
 
 
 func _on_retry_button_pressed() -> void:

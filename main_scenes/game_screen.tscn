@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxbqgn7tvgbgb"]
+[gd_scene load_steps=25 format=3 uid="uid://cxbqgn7tvgbgb"]
 
 [ext_resource type="PackedScene" uid="uid://wb2uss21ih6c" path="res://object_scenes/characterPortrait/plinko_portrait.tscn" id="1_722st"]
 [ext_resource type="Script" uid="uid://bk4ki04k44xye" path="res://main_scenes/game_screen.gd" id="1_xjvs2"]
@@ -12,8 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dlot1gwxk8ysb" path="res://object_scenes/puzzleBorder/bigNineRect.png" id="9_146sx"]
 [ext_resource type="PackedScene" uid="uid://sil4wu7p2ua3" path="res://ui_scenes/fancyButton/fancy_button.tscn" id="10_7xdoo"]
 [ext_resource type="Texture2D" uid="uid://bkwtcdyoqcxqo" path="res://main_scenes/lifeFlash.png" id="11_6d7kj"]
+[ext_resource type="Texture2D" uid="uid://chib6w4qw3kh5" path="res://main_scenes/newRecord.png" id="11_prpl3"]
 [ext_resource type="AudioStream" uid="uid://du0adss6ea7kx" path="res://sounds/music/Ticking.ogg" id="12_2q7n1"]
+[ext_resource type="FontFile" uid="uid://df8hkltroprxg" path="res://zeeg/fonts/blockblueprint.medium.ttf" id="12_38ytc"]
 [ext_resource type="AudioStream" uid="uid://bpfldgiysqqj3" path="res://sounds/music/Dead.ogg" id="13_ju84a"]
+[ext_resource type="AudioStream" uid="uid://c52vlrwq17m0" path="res://sounds/music/Winner.ogg" id="14_6dsqw"]
 [ext_resource type="AudioStream" uid="uid://c8dp8mlner47g" path="res://sounds/sfx/explosion.ogg" id="14_vwj7j"]
 
 [sub_resource type="Gradient" id="Gradient_146sx"]
@@ -27,6 +30,21 @@ shader_parameter/speed = 0.04
 [sub_resource type="LabelSettings" id="LabelSettings_6d7kj"]
 font = ExtResource("6_mujpq")
 font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_38ytc"]
+font = ExtResource("6_mujpq")
+font_size = 43
+
+[sub_resource type="LabelSettings" id="LabelSettings_6dsqw"]
+line_spacing = 12.0
+font = ExtResource("6_mujpq")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_dx75q"]
+font = ExtResource("12_38ytc")
+font_color = Color(0.5106012, 0.5106013, 0.5106012, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0.011764706, 1)
 
 [node name="GameScreen" type="Node2D"]
 script = ExtResource("1_xjvs2")
@@ -135,6 +153,39 @@ buttonText = "BACK TO MENU"
 position = Vector2(20, 269)
 buttonText = "QUIT GAME"
 
+[node name="Label" type="Label" parent="Menu"]
+visible = false
+offset_top = 19.0
+offset_right = 400.0
+offset_bottom = 77.0
+text = "YOU'RE A WINNER!"
+label_settings = SubResource("LabelSettings_38ytc")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Menu"]
+visible = false
+offset_top = 84.0
+offset_right = 400.0
+offset_bottom = 299.0
+text = "TIME REMAINING: 00.24"
+label_settings = SubResource("LabelSettings_6dsqw")
+horizontal_alignment = 1
+
+[node name="NewRecord" type="Sprite2D" parent="Menu"]
+visible = false
+position = Vector2(300.00003, 182.00002)
+rotation = -0.26430336
+texture = ExtResource("11_prpl3")
+
+[node name="Label3" type="Label" parent="Menu"]
+visible = false
+offset_top = 144.0
+offset_right = 400.0
+offset_bottom = 178.0
+text = "high score: 00.00 remaining"
+label_settings = SubResource("LabelSettings_dx75q")
+horizontal_alignment = 1
+
 [node name="TimerBar" type="Node2D" parent="."]
 position = Vector2(304, 155)
 
@@ -192,6 +243,10 @@ patch_margin_bottom = 16
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_2q7n1")
+bus = &"MUSIC"
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6dsqw")
 bus = &"MUSIC"
 
 [node name="DeadMusic" type="AudioStreamPlayer" parent="."]

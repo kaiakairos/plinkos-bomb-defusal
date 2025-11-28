@@ -7,6 +7,9 @@ func _ready() -> void:
 	for button in $Buttons.get_children():
 		button.frame = 0
 
+func _physics_process(delta: float) -> void:
+	for i in $Buttons.get_children():
+		i.scale = lerp(i.scale,Vector2(1.0,1.0),0.2)
 
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
@@ -20,7 +23,7 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		return
 	
 	var mousePos :Vector2 = $Buttons.get_local_mouse_position()
-	var buttonIndex :int = (int(mousePos.x) / 50) + ((int(mousePos.y) / 50) * 3)
+	var buttonIndex :int = (int(mousePos.x) / 42) + ((int(mousePos.y) / 42) * 3)
 	
 	if buttonIndex < 0 or buttonIndex >= 9:
 		return # this should never happen, but i got a crash where it DID so just in case catch this
@@ -37,6 +40,10 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 	if buttonIndex < 6:
 		flipButton( $Buttons.get_child(buttonIndex + 3) )
 	
+	$Click.position = get_local_mouse_position()
+	$Click.pitch_scale = 1.0 + randf_range(-0.1,0.1)
+	$Click.play()
+	
 	
 	for i in $Buttons.get_children():
 		if i.frame == 0:
@@ -45,3 +52,4 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 
 func flipButton(buttonSprite:Sprite2D):
 	buttonSprite.frame = abs(buttonSprite.frame - 1)
+	buttonSprite.scale = Vector2(0.8,0.8)
