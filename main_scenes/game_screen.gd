@@ -3,10 +3,12 @@ class_name GameScreen
 
 var puzzles :Array[String] = [
 	#"res://object_scenes/puzzles/test_puzzle.tscn",
+	
 	"res://object_scenes/puzzles/pattern_match.tscn",
 	"res://object_scenes/puzzles/word_spell_puzzle.tscn",
 	"res://object_scenes/puzzles/dial_puzzle.tscn",
-	"res://object_scenes/puzzles/color_match_puzzle.tscn"
+	"res://object_scenes/puzzles/color_match_puzzle.tscn",
+	"res://object_scenes/puzzles/mario_rpg_puzzle.tscn",
 	
 ]
 
@@ -129,6 +131,9 @@ func lose() -> void:
 	
 
 func win() -> void:
+	
+	if lost:
+		return # incase of events where the player lost and won on the same frame, should always lose first
 	
 	
 	$PlinkoPortrait.setAnim("win")

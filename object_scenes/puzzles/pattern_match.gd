@@ -27,6 +27,9 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 		return
 	if !event.pressed:
 		return
+	if !puzzleEnabled:
+		return
+	
 	
 	var mousePos :Vector2 = $Buttons.get_local_mouse_position()
 	var buttonIndex :int = (int(mousePos.x) / 32) + ((int(mousePos.y) / 32) * 4)
