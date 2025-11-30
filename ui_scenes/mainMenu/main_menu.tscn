@@ -42,7 +42,7 @@ offset_bottom = 300.0
 color = Color(0.03137255, 0.023529412, 0.023529412, 1)
 
 [node name="Buttons" type="Node2D" parent="."]
-position = Vector2(30, 156)
+position = Vector2(26, 134.595)
 
 [node name="play" parent="Buttons" instance=ExtResource("1_rvujo")]
 buttonText = "PLAY GAME"
@@ -55,8 +55,12 @@ buttonText = "DAILY PUZZLE"
 position = Vector2(0, 64)
 buttonText = "CREDITS"
 
-[node name="quit" parent="Buttons" instance=ExtResource("1_rvujo")]
+[node name="stats" parent="Buttons" instance=ExtResource("1_rvujo")]
 position = Vector2(0, 96)
+buttonText = "STATS"
+
+[node name="quit" parent="Buttons" instance=ExtResource("1_rvujo")]
+position = Vector2(0, 128)
 buttonText = "QUIT"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -175,15 +179,38 @@ buttonText = "BACK"
 
 [node name="Logo" type="Sprite2D" parent="."]
 modulate = Color(1, 0.91764706, 0.23137255, 1)
-position = Vector2(104, 78)
+position = Vector2(86, 69)
 texture = ExtResource("9_5v0ay")
+
+[node name="stats" type="Node2D" parent="."]
+position = Vector2(400, 0)
+
+[node name="Label" type="Label" parent="stats"]
+offset_top = 47.0
+offset_right = 235.0
+offset_bottom = 262.0
+text = "STATS
+
+BEST TIME: 00:00 remaining
+
+BEST CLICKS: 20 clicks
+
+TIMES WON: 20"
+label_settings = SubResource("LabelSettings_5v0ay")
+horizontal_alignment = 1
+
+[node name="statBack" parent="stats" instance=ExtResource("1_rvujo")]
+position = Vector2(189, 270)
+buttonText = "BACK"
 
 [connection signal="buttonPressed" from="Buttons/play" to="." method="_on_play_button_pressed"]
 [connection signal="buttonPressed" from="Buttons/daily" to="." method="_on_daily_button_pressed"]
 [connection signal="buttonPressed" from="Buttons/credits" to="." method="_on_credits_button_pressed"]
+[connection signal="buttonPressed" from="Buttons/stats" to="." method="_on_stats_button_pressed"]
 [connection signal="buttonPressed" from="Buttons/quit" to="." method="_on_quit_button_pressed"]
 [connection signal="buttonPressed" from="credits/kaiaCredit" to="." method="_on_kaia_credit_button_pressed"]
 [connection signal="buttonPressed" from="credits/sageCredit" to="." method="_on_sage_credit_button_pressed"]
 [connection signal="buttonPressed" from="credits/jamLink" to="." method="_on_jam_link_button_pressed"]
 [connection signal="buttonPressed" from="credits/jamLink2" to="." method="_on_jam_link_2_button_pressed"]
 [connection signal="buttonPressed" from="credits/credit back" to="." method="_on_credit_back_button_pressed"]
+[connection signal="buttonPressed" from="stats/statBack" to="." method="_on_stat_back_button_pressed"]

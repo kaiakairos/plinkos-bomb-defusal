@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://8yyw2xqs6j01"]
+
+[ext_resource type="Script" uid="uid://cs56tb0ihl7v3" path="res://object_scenes/puzzles/scary_maze.gd" id="1_xkeki"]
+[ext_resource type="Texture2D" uid="uid://cmr1v3y0uqm5q" path="res://object_scenes/puzzles/puzzleAssets/scary.png" id="2_4wdqx"]
+[ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="2_j0ojn"]
+[ext_resource type="Texture2D" uid="uid://ci0ltoqfuftf0" path="res://object_scenes/puzzles/puzzleAssets/mazeBubble.png" id="3_wqjse"]
+[ext_resource type="AudioStream" uid="uid://cafywwcm1nd33" path="res://sounds/sfx/scream.ogg" id="5_sdh7l"]
+[ext_resource type="AudioStream" uid="uid://p21u3rw8apyk" path="res://sounds/sfx/dialTick.ogg" id="6_o6shr"]
+
+[sub_resource type="Gradient" id="Gradient_o6shr"]
+colors = PackedColorArray(1, 0.759633, 0.75508004, 1, 1, 1, 1, 1)
+
+[node name="scaryMaze" type="Node2D"]
+script = ExtResource("1_xkeki")
+gradient = SubResource("Gradient_o6shr")
+metadata/_custom_type_script = "uid://upsjslom8kcg"
+
+[node name="mazeSprite" type="Sprite2D" parent="."]
+position = Vector2(25, 25)
+scale = Vector2(10, 10)
+centered = false
+
+[node name="Scary" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(75, 75)
+texture = ExtResource("2_4wdqx")
+
+[node name="RECT" parent="." instance=ExtResource("2_j0ojn")]
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 128.0
+offset_bottom = 128.0
+
+[node name="MazeBubble" type="Sprite2D" parent="."]
+position = Vector2(43, 48)
+texture = ExtResource("3_wqjse")
+hframes = 2
+
+[node name="scream" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(75, 75)
+stream = ExtResource("5_sdh7l")
+volume_db = -3.76
+pitch_scale = 2.01
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(75, 75)
+stream = ExtResource("6_o6shr")

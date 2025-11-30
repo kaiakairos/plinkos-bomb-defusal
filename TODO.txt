@@ -1,9 +1,7 @@
 LAST THINGS TO DO:
 	
 	- duck hunt minigame
-	- maze game minigame ??
 	- wire match minigame ??
-	- thumbnail art
 
 DO BEFORE NEWGROUNDS VERSION:
 	- medal art

@@ -2,6 +2,7 @@
 .godot/
 .nomedia
 .export/
+.webpagestuff/
 
 # Godot-specific ignores
 .import/

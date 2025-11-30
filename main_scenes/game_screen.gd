@@ -9,6 +9,7 @@ var puzzles :Array[String] = [
 	"res://object_scenes/puzzles/dial_puzzle.tscn",
 	"res://object_scenes/puzzles/color_match_puzzle.tscn",
 	"res://object_scenes/puzzles/mario_rpg_puzzle.tscn",
+	"res://object_scenes/puzzles/scary_maze.tscn",
 	
 ]
 
@@ -31,6 +32,7 @@ func _ready() -> void:
 	var coolNewSeed :int = randi()
 	if Global.setSeed != 0:
 		coolNewSeed = Global.setSeed
+		$Menu/Label4.text = Global.getDayString()
 	generatePuzzles(coolNewSeed)
 
 func generatePuzzles(randomSeed:int) -> void:
@@ -182,7 +184,10 @@ func win() -> void:
 		labelText2 = labelText2.left(5)
 		
 		$Menu/Label3.text = "high score: " + labelText2 + " remaining"
-		
+		Global.totalTimesWon += 1
+		if clicks < Global.bestClicks:
+			Global.bestClicks = clicks
+			# SCOREBOARD CLICKS HERE
 	else:
 		# daily high score
 		if Global.lastDayPlayed != Global.setSeed:

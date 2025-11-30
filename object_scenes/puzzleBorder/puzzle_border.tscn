@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccsyqv7aop0lt"]
+[gd_scene load_steps=12 format=3 uid="uid://ccsyqv7aop0lt"]
 
 [ext_resource type="Script" uid="uid://bqq67xvtsfimf" path="res://object_scenes/puzzleBorder/puzzle_border.gd" id="1_nltgh"]
 [ext_resource type="Texture2D" uid="uid://cwqiwj4otepwj" path="res://object_scenes/puzzleBorder/mask.png" id="1_pgbl8"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://ocmmvilacskp" path="res://sounds/sfx/popLid.ogg" id="8_c3wmi"]
 [ext_resource type="AudioStream" uid="uid://uc7c8fikk028" path="res://sounds/sfx/closeLid.ogg" id="9_kvcoa"]
 [ext_resource type="AudioStream" uid="uid://pw7pkpqcmtxc" path="res://sounds/sfx/doorShut.ogg" id="10_1sjnj"]
+[ext_resource type="AudioStream" uid="uid://cpifun5euvnk7" path="res://sounds/sfx/beatPuzzle.ogg" id="11_6daea"]
 
 [node name="puzzleBorder" type="Node2D"]
 script = ExtResource("1_nltgh")
@@ -67,5 +68,8 @@ position = Vector2(74, 74)
 stream = ExtResource("10_1sjnj")
 volume_db = 10.0
 bus = &"SFX"
+
+[node name="WinClose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_6daea")
 
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

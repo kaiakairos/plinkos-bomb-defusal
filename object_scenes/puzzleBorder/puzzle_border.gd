@@ -50,6 +50,9 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 	$Lid.z_index = 11
 
 func disablePuzzle() -> void:
+	
+	$WinClose.play()
+	
 	$ColorRect.show()
 	var tween :Tween= get_tree().create_tween()
 	tween.set_parallel(true)

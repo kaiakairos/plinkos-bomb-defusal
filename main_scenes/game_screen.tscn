@@ -186,6 +186,14 @@ text = "high score: 00.00 remaining"
 label_settings = SubResource("LabelSettings_dx75q")
 horizontal_alignment = 1
 
+[node name="Label4" type="Label" parent="Menu"]
+offset_left = 174.0
+offset_top = 283.0
+offset_right = 397.0
+offset_bottom = 317.0
+label_settings = SubResource("LabelSettings_dx75q")
+horizontal_alignment = 2
+
 [node name="TimerBar" type="Node2D" parent="."]
 position = Vector2(304, 155)
 
