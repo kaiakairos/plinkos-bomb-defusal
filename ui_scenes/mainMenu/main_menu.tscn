@@ -39,7 +39,7 @@ script = ExtResource("1_2tnkl")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 400.0
 offset_bottom = 300.0
-color = Color(0.03137255, 0.023529412, 0.023529412, 1)
+color = Color(0.053108715, 0.041400626, 0.041400924, 1)
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(26, 134.595)
@@ -97,7 +97,6 @@ shape = SubResource("CircleShape2D_sx3h0")
 texture_filter = 1
 position = Vector2(0, -4)
 color = Color(1, 1, 0.8, 1)
-energy = 0.55
 shadow_enabled = true
 texture = ExtResource("5_jpla1")
 offset = Vector2(0, 140.8)
