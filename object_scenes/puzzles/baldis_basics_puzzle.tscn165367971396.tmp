@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://cghov6oo4fxyf"]
+
+[ext_resource type="Script" uid="uid://bl4y5qqcjxc2l" path="res://object_scenes/puzzles/baldis_basics_puzzle.gd" id="1_83mef"]
+[ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="2_qnqfn"]
+[ext_resource type="FontFile" uid="uid://ctoy5thdlt8eg" path="res://zeeg/fonts/Aquarius-RegularMono.ttf" id="3_83mef"]
+[ext_resource type="Texture2D" uid="uid://bh5bjkoeoqrv7" path="res://object_scenes/puzzles/puzzleAssets/mathButton.png" id="4_wmvf2"]
+[ext_resource type="Texture2D" uid="uid://6quvr3j3sso1" path="res://object_scenes/puzzles/puzzleAssets/mathCorrect.png" id="5_38yx6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmvf2"]
+font = ExtResource("3_83mef")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_38yx6"]
+font = ExtResource("3_83mef")
+font_size = 8
+
+[node name="BaldisBasicsPuzzle" type="Node2D"]
+script = ExtResource("1_83mef")
+metadata/_custom_type_script = "uid://upsjslom8kcg"
+
+[node name="question" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="question"]
+offset_left = 27.0
+offset_top = 17.0
+offset_right = 123.0
+offset_bottom = 41.0
+color = Color(0.10980392, 0, 0, 1)
+
+[node name="RECT" parent="question" instance=ExtResource("2_qnqfn")]
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 125.0
+offset_bottom = 43.0
+
+[node name="bgText" type="Label" parent="question"]
+visible = false
+modulate = Color(0.50980395, 0, 0, 0.30980393)
+offset_left = 28.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 50.0
+text = "------------"
+label_settings = SubResource("LabelSettings_wmvf2")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="question"]
+offset_left = 28.0
+offset_top = 23.0
+offset_right = 122.0
+offset_bottom = 46.0
+label_settings = SubResource("LabelSettings_wmvf2")
+horizontal_alignment = 1
+
+[node name="answers" type="Node2D" parent="."]
+position = Vector2(75, 48)
+
+[node name="MathButton" type="Sprite2D" parent="answers"]
+position = Vector2(-25, 15)
+texture = ExtResource("4_wmvf2")
+hframes = 2
+
+[node name="ColorRect" type="ColorRect" parent="answers/MathButton"]
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 21.0
+offset_bottom = 13.0
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="answers/MathButton"]
+modulate = Color(0.1955451, 0.1955451, 0.19554508, 1)
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 11.0
+text = "-23"
+label_settings = SubResource("LabelSettings_38yx6")
+horizontal_alignment = 1
+
+[node name="MathButton2" type="Sprite2D" parent="answers"]
+position = Vector2(25, 15)
+texture = ExtResource("4_wmvf2")
+hframes = 2
+
+[node name="ColorRect2" type="ColorRect" parent="answers/MathButton2"]
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 21.0
+offset_bottom = 13.0
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="answers/MathButton2"]
+modulate = Color(0.1955451, 0.1955451, 0.19554508, 1)
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 11.0
+text = "-23"
+label_settings = SubResource("LabelSettings_38yx6")
+horizontal_alignment = 1
+
+[node name="MathButton3" type="Sprite2D" parent="answers"]
+position = Vector2(-25, 45)
+texture = ExtResource("4_wmvf2")
+hframes = 2
+
+[node name="ColorRect3" type="ColorRect" parent="answers/MathButton3"]
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 21.0
+offset_bottom = 13.0
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="answers/MathButton3"]
+modulate = Color(0.1955451, 0.1955451, 0.19554508, 1)
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 11.0
+text = "-23"
+label_settings = SubResource("LabelSettings_38yx6")
+horizontal_alignment = 1
+
+[node name="MathButton4" type="Sprite2D" parent="answers"]
+position = Vector2(25, 45)
+texture = ExtResource("4_wmvf2")
+hframes = 2
+
+[node name="ColorRect4" type="ColorRect" parent="answers/MathButton4"]
+offset_left = -21.0
+offset_top = -13.0
+offset_right = 21.0
+offset_bottom = 13.0
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="answers/MathButton4"]
+modulate = Color(0.1955451, 0.1955451, 0.19554508, 1)
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 11.0
+text = "-23"
+label_settings = SubResource("LabelSettings_38yx6")
+horizontal_alignment = 1
+
+[node name="MathCorrect" type="Sprite2D" parent="."]
+position = Vector2(75, 125)
+texture = ExtResource("5_38yx6")
+vframes = 4
+
+[connection signal="gui_input" from="answers/MathButton/ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="gui_input" from="answers/MathButton2/ColorRect2" to="." method="_on_color_rect_2_gui_input"]
+[connection signal="gui_input" from="answers/MathButton3/ColorRect3" to="." method="_on_color_rect_3_gui_input"]
+[connection signal="gui_input" from="answers/MathButton4/ColorRect4" to="." method="_on_color_rect_4_gui_input"]

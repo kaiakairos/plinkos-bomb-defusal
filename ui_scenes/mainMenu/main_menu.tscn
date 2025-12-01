@@ -39,7 +39,7 @@ script = ExtResource("1_2tnkl")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 400.0
 offset_bottom = 300.0
-color = Color(0.053108715, 0.041400626, 0.041400924, 1)
+color = Color(0.09538584, 0.07895584, 0.07899275, 1)
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(26, 134.595)

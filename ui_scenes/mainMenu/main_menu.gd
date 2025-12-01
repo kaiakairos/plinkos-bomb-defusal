@@ -22,7 +22,8 @@ func _ready() -> void:
 	else:
 		stats += "BEST CLICKS: UNKNOWN\n\n"
 	
-	stats += "TIMES WON: " + str(Global.totalTimesWon)
+	stats += "TIMES WON: " + str(Global.totalTimesWon) + "\n\n"
+	stats += "TIMES LOST: " + str(Global.totalTimesLost)
 	$stats/Label.text = stats
 
 

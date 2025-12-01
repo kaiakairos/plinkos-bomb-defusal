@@ -8,6 +8,63 @@
 script = ExtResource("1_8di63")
 metadata/_custom_type_script = "uid://upsjslom8kcg"
 
+[node name="Buttons2" type="Node2D" parent="."]
+position = Vector2(12, 12)
+
+[node name="1" type="Sprite2D" parent="Buttons2"]
+position = Vector2(21, 21)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="2" type="Sprite2D" parent="Buttons2"]
+position = Vector2(63, 21)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="3" type="Sprite2D" parent="Buttons2"]
+position = Vector2(105, 21)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="4" type="Sprite2D" parent="Buttons2"]
+position = Vector2(21, 63)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="5" type="Sprite2D" parent="Buttons2"]
+position = Vector2(63, 63)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="6" type="Sprite2D" parent="Buttons2"]
+position = Vector2(105, 63)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="7" type="Sprite2D" parent="Buttons2"]
+position = Vector2(21, 105)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="8" type="Sprite2D" parent="Buttons2"]
+position = Vector2(63, 105)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
+[node name="9" type="Sprite2D" parent="Buttons2"]
+position = Vector2(105, 105)
+texture = ExtResource("2_8hf2e")
+hframes = 2
+frame = 1
+
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(12, 12)
 
@@ -84,5 +141,6 @@ color = Color(0.21568628, 0.03529412, 0.11372549, 1)
 [node name="Click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_8hf2e")
 max_polyphony = 3
+bus = &"SFX"
 
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

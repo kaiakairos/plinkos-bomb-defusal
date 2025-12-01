@@ -10,7 +10,7 @@ var bestClicks :int = 99999999
 var lastDayPlayed :int = 0
 var bestDayTime :float = 0.0
 
-
+var totalTimesLost :int = 0
 
 
 func _ready() -> void:
@@ -23,6 +23,7 @@ func _ready() -> void:
 	bestDayTime = d["bestDayTime"]
 	totalTimesWon = d["totalTimesWon"]
 	bestClicks = d["bestClicks"]
+	totalTimesLost = d["totalTimesLost"]
 
 func save() -> void:
 	Saving.write_save("scores",{
@@ -31,6 +32,7 @@ func save() -> void:
 		"bestDayTime":bestDayTime,
 		"totalTimesWon":totalTimesWon,
 		"bestClicks":bestClicks,
+		"totalTimesLost":totalTimesLost,
 	})
 
 func getDayInt() -> int:

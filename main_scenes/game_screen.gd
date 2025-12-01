@@ -10,6 +10,8 @@ var puzzles :Array[String] = [
 	"res://object_scenes/puzzles/color_match_puzzle.tscn",
 	"res://object_scenes/puzzles/mario_rpg_puzzle.tscn",
 	"res://object_scenes/puzzles/scary_maze.tscn",
+	"res://object_scenes/puzzles/baldis_basics_puzzle.tscn",
+	
 	
 ]
 
@@ -134,6 +136,11 @@ func lose() -> void:
 	explosionRange = 2.0
 	
 	$Explosion.play()
+	
+	if Global.setSeed == 0:
+		Global.totalTimesLost += 1
+		Global.save()
+	
 	
 	await get_tree().create_timer(1.0).timeout
 	var tween = get_tree().create_tween()
