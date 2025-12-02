@@ -64,6 +64,8 @@ func _process(delta: float) -> void:
 	$Logo.rotation = sin( Time.get_ticks_msec()  * 0.005) * 0.04
 
 func _on_quit_button_pressed() -> void:
+	if OS.has_feature("web"):
+		return
 	get_tree().quit()
 
 

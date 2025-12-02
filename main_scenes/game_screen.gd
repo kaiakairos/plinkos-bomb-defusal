@@ -142,6 +142,8 @@ func lose() -> void:
 		Global.save()
 	
 	
+	Ngio.request("Medal.unlock", {"id": 87367})
+	
 	await get_tree().create_timer(1.0).timeout
 	var tween = get_tree().create_tween()
 	tween.tween_property($ExplosionEffect/ColorRect,"color:a",0.0,4.0)
@@ -195,6 +197,27 @@ func win() -> void:
 		if clicks < Global.bestClicks:
 			Global.bestClicks = clicks
 			# SCOREBOARD CLICKS HERE
+		
+		
+		# only unlock medals in random mode
+		Ngio.request("Medal.unlock", {"id": 87368})
+		if timer < 1.0:
+			Ngio.request("Medal.unlock", {"id": 87369})
+		if timer > 10.0:
+			Ngio.request("Medal.unlock", {"id": 87370})
+		
+		if Global.totalTimesWon >= 10:
+			Ngio.request("Medal.unlock", {"id": 87371})
+		if Global.totalTimesWon >= 100:
+			Ngio.request("Medal.unlock", {"id": 87372})
+		
+		if clicks <= 15:
+			Ngio.request("Medal.unlock", {"id": 87373})
+		
+		Ngio.request("ScoreBoard.postScore", {"id": 15370, "value": int(timer * 1000)})
+		Ngio.request("ScoreBoard.postScore", {"id": 15371, "value": clicks})
+		Ngio.request("ScoreBoard.postScore", {"id": 15372, "value": 1})
+		
 	else:
 		# daily high score
 		if Global.lastDayPlayed != Global.setSeed:
@@ -221,6 +244,8 @@ func _on_retry_button_pressed() -> void:
 	SceneTransitioner.transitionScene("res://main_scenes/game_screen.tscn")
 
 func _on_quit_button_pressed() -> void:
+	if OS.has_feature("web"):
+		return
 	get_tree().quit()
 
 func _on_back_to_menu_button_pressed() -> void:

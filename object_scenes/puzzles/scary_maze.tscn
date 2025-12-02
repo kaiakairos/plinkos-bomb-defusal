@@ -41,7 +41,9 @@ position = Vector2(75, 75)
 stream = ExtResource("5_sdh7l")
 volume_db = -3.76
 pitch_scale = 2.01
+bus = &"SFX"
 
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(75, 75)
 stream = ExtResource("6_o6shr")
+bus = &"SFX"

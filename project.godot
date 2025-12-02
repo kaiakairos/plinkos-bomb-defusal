@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 Global="*res://autoload/Global.gd"
 SceneTransitioner="*res://autoload/SceneTransitioner.gd"
 Saving="*res://autoload/Saving.gd"
+Ngio="*res://autoload/ngio.gd"
 
 [debug]
 
