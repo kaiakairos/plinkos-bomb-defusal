@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sil4wu7p2ua3"]
+[gd_scene format=3 uid="uid://sil4wu7p2ua3"]
 
 [ext_resource type="FontFile" uid="uid://df8hkltroprxg" path="res://zeeg/fonts/blockblueprint.medium.ttf" id="1_n5mck"]
 [ext_resource type="Script" uid="uid://pjosy1tqryea" path="res://ui_scenes/fancyButton/fancy_button.gd" id="1_ojpn4"]
@@ -9,23 +9,28 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_vyxfi"]
 font = ExtResource("1_n5mck")
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
-[node name="FancyButton" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_8wixg"]
+font = ExtResource("1_n5mck")
+
+[node name="FancyButton" type="Node2D" unique_id=2076378646]
 script = ExtResource("1_ojpn4")
 
-[node name="WhiteLabel" type="Label" parent="."]
+[node name="WhiteLabel" type="Label" parent="." unique_id=1648672843]
 offset_right = 125.0
 offset_bottom = 23.0
 text = "PENIS"
 label_settings = SubResource("LabelSettings_vyxfi")
 
-[node name="Mask" type="Sprite2D" parent="."]
+[node name="Mask" type="Sprite2D" parent="." unique_id=1280388232]
 clip_children = 1
 position = Vector2(-203, -7)
 texture = ExtResource("3_k4ju1")
 centered = false
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Mask"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Mask" unique_id=560824986]
 offset_left = 200.0
 offset_top = 7.0
 offset_right = 244.0
@@ -36,29 +41,29 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="BlackLabel" type="Label" parent="Mask/NinePatchRect"]
+[node name="BlackLabel" type="Label" parent="Mask/NinePatchRect" unique_id=586537558]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 3.0
 offset_right = 100.0
 offset_bottom = 23.0
 text = "PENIS"
-label_settings = SubResource("LabelSettings_vyxfi")
+label_settings = SubResource("LabelSettings_8wixg")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=555796962]
 modulate = Color(1, 1, 1, 0)
 offset_left = -3.0
 offset_right = 41.0
 offset_bottom = 16.0
 
-[node name="hover" type="AudioStreamPlayer2D" parent="."]
+[node name="hover" type="AudioStreamPlayer2D" parent="." unique_id=1550136680]
 position = Vector2(14, 8)
 stream = ExtResource("5_8wixg")
 volume_db = -10.339
 pitch_scale = 1.68
 max_polyphony = 3
 
-[node name="clicked" type="AudioStreamPlayer2D" parent="."]
+[node name="clicked" type="AudioStreamPlayer2D" parent="." unique_id=1749786722]
 position = Vector2(14, 8)
 stream = ExtResource("6_fqi51")
 

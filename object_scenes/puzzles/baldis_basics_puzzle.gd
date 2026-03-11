@@ -31,9 +31,13 @@ func generateMathPuzzles() -> void:
 			answer = number1 * number2
 			s = " x "
 	
+	if abs(answer) > 70:
+		generateMathPuzzles() # reroll, keep the numbers small
+		return
+	
 	$question/Label.text = str(number1) + s + str(number2) + " = ?"
 	
-	var answerButton :int = rand.randi() % 3
+	var answerButton :int = rand.randi() % 4
 	for i in range(4):
 		var label :Label
 		match i:

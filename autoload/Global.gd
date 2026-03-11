@@ -12,6 +12,7 @@ var bestDayTime :float = 0.0
 
 var totalTimesLost :int = 0
 
+signal toggleFullscreen(isFullscreen:bool)
 
 func _ready() -> void:
 	var d :Dictionary= Saving.read_save("scores")
@@ -56,3 +57,12 @@ func getDayString() -> String:
 		11: string = "Nov "
 		12: string = "Dec "
 	return string + str(datetime.day) + " " + str(datetime.year)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fullscreen"):
+		var mode := DisplayServer.window_get_mode()
+		var is_window: bool = mode != DisplayServer.WINDOW_MODE_FULLSCREEN
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if is_window else DisplayServer.WINDOW_MODE_WINDOWED)
+		emit_signal("toggleFullscreen",is_window)
+		

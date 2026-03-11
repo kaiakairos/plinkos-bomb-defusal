@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ssqlqyxyg6na"]
+[gd_scene format=3 uid="uid://ssqlqyxyg6na"]
 
 [ext_resource type="Script" uid="uid://ccmwg4b8ti5nq" path="res://ui_scenes/mainMenu/main_menu.gd" id="1_2tnkl"]
 [ext_resource type="PackedScene" uid="uid://sil4wu7p2ua3" path="res://ui_scenes/fancyButton/fancy_button.tscn" id="1_rvujo"]
@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://tay6rxtjat51" path="res://ui_scenes/mainMenu/lamp.png" id="7_rv34e"]
 [ext_resource type="FontFile" uid="uid://df8hkltroprxg" path="res://zeeg/fonts/blockblueprint.medium.ttf" id="8_r5kf2"]
 [ext_resource type="Texture2D" uid="uid://dowikpxb8cjb1" path="res://ui_scenes/mainMenu/logo.png" id="9_5v0ay"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jpla1"]
-polygon = PackedVector2Array(125, 190, 102, 232, -311, 226, -314, 190)
+[ext_resource type="Shader" uid="uid://cgfwcuyjat2op" path="res://zeeg/shaders/gameBackground.gdshader" id="10_of6cm"]
+[ext_resource type="Texture2D" uid="uid://3o8qb36jv2if" path="res://main_scenes/background.png" id="11_mtn4g"]
+[ext_resource type="Texture2D" uid="uid://b3puaynq0q2vc" path="res://main_scenes/edge.png" id="12_mtn4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpla1"]
 
@@ -30,70 +30,85 @@ normal_texture = ExtResource("5_rv34e")
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rv34e"]
 polygon = PackedVector2Array(15, 164, 15, 167, 44, 169, 51, 162, 38, 165)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_of6cm"]
+polygon = PackedVector2Array(-450, 217, 600, 217, 600, 367, -450, 367)
+
 [sub_resource type="LabelSettings" id="LabelSettings_5v0ay"]
 font = ExtResource("8_r5kf2")
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
 
-[node name="MainMenu" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_qji87"]
+font = ExtResource("8_r5kf2")
+font_color = Color(0.2656177, 0.23275054, 0.23274267, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wj4ky"]
+shader = ExtResource("10_of6cm")
+shader_parameter/shade = Color(1, 1, 1, 0.015686275)
+shader_parameter/speed = 0.455
+
+[sub_resource type="Curve" id="Curve_5v0ay"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.18704593, 0.85861766), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.251372, 0.0, 0, 0]
+point_count = 3
+
+[node name="MainMenu" type="Node2D" unique_id=29242272]
 script = ExtResource("1_2tnkl")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1645755102]
+z_index = -2
 offset_right = 400.0
 offset_bottom = 300.0
 color = Color(0.09538584, 0.07895584, 0.07899275, 1)
 
-[node name="Buttons" type="Node2D" parent="."]
+[node name="Buttons" type="Node2D" parent="." unique_id=1796822027]
 position = Vector2(26, 134.595)
 
-[node name="play" parent="Buttons" instance=ExtResource("1_rvujo")]
+[node name="play" parent="Buttons" unique_id=503327320 instance=ExtResource("1_rvujo")]
 buttonText = "PLAY GAME"
 
-[node name="daily" parent="Buttons" instance=ExtResource("1_rvujo")]
+[node name="daily" parent="Buttons" unique_id=16035580 instance=ExtResource("1_rvujo")]
 position = Vector2(0, 32)
 buttonText = "DAILY PUZZLE"
 
-[node name="credits" parent="Buttons" instance=ExtResource("1_rvujo")]
+[node name="credits" parent="Buttons" unique_id=1728430279 instance=ExtResource("1_rvujo")]
 position = Vector2(0, 64)
 buttonText = "CREDITS"
 
-[node name="stats" parent="Buttons" instance=ExtResource("1_rvujo")]
+[node name="stats" parent="Buttons" unique_id=1471399555 instance=ExtResource("1_rvujo")]
 position = Vector2(0, 96)
 buttonText = "STATS"
 
-[node name="quit" parent="Buttons" instance=ExtResource("1_rvujo")]
+[node name="quit" parent="Buttons" unique_id=1816428293 instance=ExtResource("1_rvujo")]
 position = Vector2(0, 128)
 buttonText = "QUIT"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1448837918]
 stream = ExtResource("3_20wqv")
 volume_db = 3.0
 pitch_scale = 1.72
 autoplay = true
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
-position = Vector2(300, 83)
-occluder = SubResource("OccluderPolygon2D_jpla1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1375866209]
 position = Vector2(303, -11)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=111675061]
 shape = SubResource("RectangleShape2D_jpla1")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1657866891]
 position = Vector2(303, -11)
 rotation = 0.42105028
 node_a = NodePath("../StaticBody2D")
 node_b = NodePath("RigidBody2D")
 softness = 16.0
 
-[node name="RigidBody2D" type="RigidBody2D" parent="PinJoint2D"]
+[node name="RigidBody2D" type="RigidBody2D" parent="PinJoint2D" unique_id=1474085530]
 position = Vector2(0, 110)
 physics_material_override = SubResource("PhysicsMaterial_rv34e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PinJoint2D/RigidBody2D" unique_id=409462579]
 shape = SubResource("CircleShape2D_sx3h0")
 
-[node name="PointLight2D" type="PointLight2D" parent="PinJoint2D/RigidBody2D"]
+[node name="PointLight2D" type="PointLight2D" parent="PinJoint2D/RigidBody2D" unique_id=263671832]
 texture_filter = 1
 position = Vector2(0, -4)
 color = Color(1, 1, 0.8, 1)
@@ -103,35 +118,39 @@ offset = Vector2(0, 140.8)
 texture_scale = 0.55
 height = 30.0
 
-[node name="Line2D" type="Line2D" parent="PinJoint2D/RigidBody2D"]
+[node name="Line2D" type="Line2D" parent="PinJoint2D/RigidBody2D" unique_id=647520269]
 position = Vector2(0, -110)
 points = PackedVector2Array(0, 105, 0, -99)
 width = 2.98
 default_color = Color(0, 0, 0, 1)
 
-[node name="Lamp" type="Sprite2D" parent="PinJoint2D/RigidBody2D"]
+[node name="Lamp" type="Sprite2D" parent="PinJoint2D/RigidBody2D" unique_id=2003217091]
 position = Vector2(0, -11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_rv34e")
 
-[node name="thing" type="Node2D" parent="."]
+[node name="thing" type="Node2D" parent="." unique_id=101940037]
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="thing"]
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="thing" unique_id=1672688859]
 position = Vector2(300, 83)
 occluder = SubResource("OccluderPolygon2D_sx3h0")
 
-[node name="Guy" type="Sprite2D" parent="thing"]
+[node name="Guy" type="Sprite2D" parent="thing" unique_id=1590754171]
 position = Vector2(306, 190)
 texture = SubResource("CanvasTexture_r5kf2")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="thing"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="thing" unique_id=953669801]
 position = Vector2(300, 83)
 occluder = SubResource("OccluderPolygon2D_rv34e")
 
-[node name="credits" type="Node2D" parent="."]
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="thing" unique_id=556123031]
+position = Vector2(301, 66)
+occluder = SubResource("OccluderPolygon2D_of6cm")
+
+[node name="credits" type="Node2D" parent="." unique_id=619058653]
 position = Vector2(400, 0)
 
-[node name="Label" type="Label" parent="credits"]
+[node name="Label" type="Label" parent="credits" unique_id=1443625489]
 offset_left = -6.0
 offset_top = 22.0
 offset_right = 245.0
@@ -152,39 +171,39 @@ Freesound.org and Titanfall"
 label_settings = SubResource("LabelSettings_5v0ay")
 horizontal_alignment = 1
 
-[node name="kaiaCredit" parent="credits" instance=ExtResource("1_rvujo")]
+[node name="kaiaCredit" parent="credits" unique_id=1401385458 instance=ExtResource("1_rvujo")]
 modulate = Color(1, 0.91764706, 0.23137255, 1)
 position = Vector2(52, 69)
 buttonText = "kaiakairos - author"
 
-[node name="sageCredit" parent="credits" instance=ExtResource("1_rvujo")]
+[node name="sageCredit" parent="credits" unique_id=2013803678 instance=ExtResource("1_rvujo")]
 modulate = Color(1, 0.91764706, 0.23137255, 1)
 position = Vector2(35, 115)
 buttonText = "staggernight - musician"
 
-[node name="jamLink" parent="credits" instance=ExtResource("1_rvujo")]
+[node name="jamLink" parent="credits" unique_id=1014963426 instance=ExtResource("1_rvujo")]
 modulate = Color(1, 0.91764706, 0.23137255, 1)
 position = Vector2(107, 166)
 buttonText = "MCCGDC Fall Jam"
 
-[node name="jamLink2" parent="credits" instance=ExtResource("1_rvujo")]
+[node name="jamLink2" parent="credits" unique_id=2054408726 instance=ExtResource("1_rvujo")]
 modulate = Color(1, 0.91764706, 0.23137255, 1)
 position = Vector2(79, 184)
 buttonText = "20 Second Jam 2025"
 
-[node name="credit back" parent="credits" instance=ExtResource("1_rvujo")]
+[node name="credit back" parent="credits" unique_id=286804051 instance=ExtResource("1_rvujo")]
 position = Vector2(189, 270)
 buttonText = "BACK"
 
-[node name="Logo" type="Sprite2D" parent="."]
+[node name="Logo" type="Sprite2D" parent="." unique_id=986292111]
 modulate = Color(1, 0.91764706, 0.23137255, 1)
 position = Vector2(86, 69)
 texture = ExtResource("9_5v0ay")
 
-[node name="stats" type="Node2D" parent="."]
+[node name="stats" type="Node2D" parent="." unique_id=748551542]
 position = Vector2(400, 0)
 
-[node name="Label" type="Label" parent="stats"]
+[node name="Label" type="Label" parent="stats" unique_id=1212363758]
 offset_top = 47.0
 offset_right = 235.0
 offset_bottom = 262.0
@@ -198,9 +217,79 @@ TIMES WON: 20"
 label_settings = SubResource("LabelSettings_5v0ay")
 horizontal_alignment = 1
 
-[node name="statBack" parent="stats" instance=ExtResource("1_rvujo")]
+[node name="statBack" parent="stats" unique_id=761423800 instance=ExtResource("1_rvujo")]
 position = Vector2(189, 270)
 buttonText = "BACK"
+
+[node name="expolabel" type="Label" parent="." unique_id=931702624]
+visible = false
+offset_left = 8.0
+offset_top = 279.0
+offset_right = 349.0
+offset_bottom = 295.0
+text = "Luminarium Expo Version"
+label_settings = SubResource("LabelSettings_qji87")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1787304262]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_wj4ky")
+texture = ExtResource("11_mtn4g")
+centered = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1738017534]
+z_index = -1
+position = Vector2(201, -33)
+amount = 128
+preprocess = 5.0
+speed_scale = 0.15
+emission_shape = 3
+emission_rect_extents = Vector2(250, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 67.4
+initial_velocity_max = 107.7
+angle_min = -586.0
+angle_max = 720.0
+scale_amount_min = 45.0
+scale_amount_max = 45.0
+scale_amount_curve = SubResource("Curve_5v0ay")
+color = Color(0.023529412, 0.023529412, 0.023529412, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=328382137]
+z_index = -1
+position = Vector2(190, 316)
+rotation = 3.1415927
+amount = 128
+preprocess = 5.0
+speed_scale = 0.15
+emission_shape = 3
+emission_rect_extents = Vector2(250, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 67.4
+initial_velocity_max = 107.7
+angle_min = -586.0
+angle_max = 720.0
+scale_amount_min = 45.0
+scale_amount_max = 45.0
+scale_amount_curve = SubResource("Curve_5v0ay")
+color = Color(0.022357475, 0.022357482, 0.02235745, 1)
+
+[node name="expoEdges" type="Node2D" parent="." unique_id=346781339]
+visible = false
+
+[node name="Edge" type="Sprite2D" parent="expoEdges" unique_id=287753447]
+position = Vector2(4, 150)
+rotation = 1.5707964
+texture = ExtResource("12_mtn4g")
+
+[node name="Edge2" type="Sprite2D" parent="expoEdges" unique_id=1134103693]
+position = Vector2(396, 150)
+rotation = -1.5707964
+texture = ExtResource("12_mtn4g")
 
 [connection signal="buttonPressed" from="Buttons/play" to="." method="_on_play_button_pressed"]
 [connection signal="buttonPressed" from="Buttons/daily" to="." method="_on_daily_button_pressed"]

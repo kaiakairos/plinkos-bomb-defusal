@@ -8,7 +8,10 @@ var  words  :  Array[String] = ["shelf","meats","death","arbor","tubes","dials",
 "steam","cheap","fumes","light","balls","haven","votes","books","error","eerie","speak","omega",
 "shirt","phage","donut","court","apple","queen","zippy","drink","valor","forks","shade","order",
 "ready","typed","words","agent","great","pacer","shout","hound","dough","trash","roast","fleas",
-"bleak","treat","plead"]
+"bleak","treat","plead","hasty","smack","shark","moped","reach","white","green","crown","ivory",
+"wheel","jewel","dream","place","sleep","found","scare","spook","stank","rocks","crazy","right",
+"wrong","heard","salty","slade","chess","every","blast","worth","worry","laugh","below","sings",
+"along","stung","prick","amaze","fated","color","slide","chime","sling","prong","boxed","gourd"]
 
 var alphabet :String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

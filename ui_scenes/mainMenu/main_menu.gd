@@ -25,7 +25,26 @@ func _ready() -> void:
 	stats += "TIMES WON: " + str(Global.totalTimesWon) + "\n\n"
 	stats += "TIMES LOST: " + str(Global.totalTimesLost)
 	$stats/Label.text = stats
+	
+	if OS.has_feature("expo"):
+		$Buttons/daily.hide()
+		$Buttons/stats.position = $Buttons/credits.position
+		$Buttons/credits.position = $Buttons/daily.position
+		$expolabel.show()
+		$Buttons/quit.hide()
+	if OS.has_feature("web"):
+		$CPUParticles2D.emitting = false
+		$CPUParticles2D.hide()
+		$Buttons/quit.hide()
 
+	Global.connect("toggleFullscreen",toggleFullscreen)
+	toggleFullscreen(false)
+
+func toggleFullscreen(isFullscreen:bool) -> void:
+
+	$expoEdges.visible = isFullscreen
+
+	
 
 func _on_play_button_pressed() -> void:
 	Global.setSeed = 0

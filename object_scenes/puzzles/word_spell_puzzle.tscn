@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://kgxyixcv352a"]
+[gd_scene format=3 uid="uid://kgxyixcv352a"]
 
 [ext_resource type="Script" uid="uid://b6we5r0diqcyr" path="res://object_scenes/puzzles/word_spell_puzzle.gd" id="1_6p4ny"]
 [ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="2_a1bb8"]
@@ -17,40 +17,40 @@ font_color = Color(1, 0.003921569, 0, 0.57254905)
 font = ExtResource("3_k3s3i")
 font_color = Color(0, 1, 0, 0.57254905)
 
-[node name="WordSpellPuzzle" type="Node2D"]
+[node name="WordSpellPuzzle" type="Node2D" unique_id=1721781049]
 script = ExtResource("1_6p4ny")
 gradient = SubResource("Gradient_a1bb8")
 metadata/_custom_type_script = "uid://upsjslom8kcg"
 
-[node name="Numba" type="Node2D" parent="."]
+[node name="Numba" type="Node2D" parent="." unique_id=50743910]
 position = Vector2(33, 10)
 
-[node name="ColorRect" type="ColorRect" parent="Numba"]
+[node name="ColorRect" type="ColorRect" parent="Numba" unique_id=948307579]
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 86.0
 offset_bottom = 20.0
 color = Color(0.10980392, 0, 0, 1)
 
-[node name="RECT2" parent="Numba" instance=ExtResource("2_a1bb8")]
+[node name="RECT2" parent="Numba" unique_id=743540117 instance=ExtResource("2_a1bb8")]
 offset_right = 89.0
 offset_bottom = 22.0
 
-[node name="Numba2" type="Node2D" parent="."]
+[node name="Numba2" type="Node2D" parent="." unique_id=2023297708]
 position = Vector2(33, 36)
 
-[node name="ColorRect" type="ColorRect" parent="Numba2"]
+[node name="ColorRect" type="ColorRect" parent="Numba2" unique_id=776346272]
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 86.0
 offset_bottom = 20.0
 color = Color(0, 0.10980392, 0, 1)
 
-[node name="RECT2" parent="Numba2" instance=ExtResource("2_a1bb8")]
+[node name="RECT2" parent="Numba2" unique_id=2098421418 instance=ExtResource("2_a1bb8")]
 offset_right = 89.0
 offset_bottom = 22.0
 
-[node name="word" type="Label" parent="."]
+[node name="word" type="Label" parent="." unique_id=252199358]
 offset_left = 36.0
 offset_top = 13.0
 offset_right = 119.0
@@ -59,7 +59,7 @@ text = "WORDS"
 label_settings = SubResource("LabelSettings_qd8mi")
 horizontal_alignment = 1
 
-[node name="preview" type="Label" parent="."]
+[node name="preview" type="Label" parent="." unique_id=3461087]
 offset_left = 36.0
 offset_top = 39.0
 offset_right = 119.0
@@ -68,40 +68,40 @@ pivot_offset = Vector2(42, 7)
 label_settings = SubResource("LabelSettings_o76q5")
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1349898348]
 offset_left = 11.0
 offset_top = 64.0
 offset_right = 139.0
 offset_bottom = 139.0
 color = Color(0.17254902, 0.17254902, 0.17254902, 1)
 
-[node name="buttons" type="Node2D" parent="."]
+[node name="buttons" type="Node2D" parent="." unique_id=430062118]
 position = Vector2(21, 75)
 
-[node name="colorRects" type="Node2D" parent="."]
+[node name="colorRects" type="Node2D" parent="." unique_id=1164592595]
 position = Vector2(12, 66)
 
-[node name="RECT" parent="." instance=ExtResource("2_a1bb8")]
+[node name="RECT" parent="." unique_id=778196580 instance=ExtResource("2_a1bb8")]
 offset_left = 9.0
 offset_top = 62.0
 offset_right = 141.0
 offset_bottom = 141.0
 
-[node name="type" type="ColorRect" parent="."]
+[node name="type" type="ColorRect" parent="." unique_id=1213547996]
 offset_left = 77.0
 offset_top = 43.0
 offset_right = 78.0
 offset_bottom = 51.0
 color = Color(0, 1, 0, 1)
 
-[node name="Click" type="AudioStreamPlayer2D" parent="."]
+[node name="Click" type="AudioStreamPlayer2D" parent="." unique_id=243300581]
 position = Vector2(77, 90)
 stream = ExtResource("4_k3s3i")
 volume_db = 6.0
 max_polyphony = 3
 bus = &"SFX"
 
-[node name="Error" type="AudioStreamPlayer2D" parent="."]
+[node name="Error" type="AudioStreamPlayer2D" parent="." unique_id=1647942912]
 position = Vector2(78, 21)
 stream = ExtResource("5_qd8mi")
 max_polyphony = 3
