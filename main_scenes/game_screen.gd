@@ -11,9 +11,13 @@ var puzzles :Array[String] = [
 	"res://object_scenes/puzzles/mario_rpg_puzzle.tscn",
 	"res://object_scenes/puzzles/scary_maze.tscn",
 	"res://object_scenes/puzzles/baldis_basics_puzzle.tscn",
+	"res://object_scenes/puzzles/erase_puzzle.tscn"
 	
 	
 ]
+
+# leave empty for main game
+var puzzleDebug :String = ""#"res://object_scenes/puzzles/erase_puzzle.tscn"
 
 var timerTicking :bool = false
 var timer :float = 20.0
@@ -48,6 +52,8 @@ func generatePuzzles(randomSeed:int) -> void:
 			r  = randomGenerator.randi() % puzzles.size()
 			s  = puzzles[r]
 			cycles += 1
+		if puzzleDebug != "" and OS.has_feature("debug"):
+			s = puzzleDebug
 		var ins :Puzzle = load(s).instantiate()
 		ins.position.x = (i % 2) * 150
 		ins.position.y = (i / 2) * 150

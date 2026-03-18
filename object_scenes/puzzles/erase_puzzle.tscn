@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b1i5qy8d7ynhb"]
+
+[ext_resource type="Script" uid="uid://cls3wyro338ny" path="res://object_scenes/puzzles/erase_puzzle.gd" id="1_uuiuu"]
+[ext_resource type="PackedScene" uid="uid://c0oirhkrxbsyw" path="res://object_scenes/puzzleBorder/rect.tscn" id="2_dndyk"]
+[ext_resource type="Texture2D" uid="uid://bhc6w8ecbfwj1" path="res://object_scenes/puzzles/puzzleAssets/whiteboard.png" id="2_vybcb"]
+[ext_resource type="AudioStream" uid="uid://cl0u80p3s4uue" path="res://sounds/sfx/erase.ogg" id="4_vybcb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jkdy1"]
+blend_mode = 3
+
+[node name="ErasePuzzle" type="Node2D" unique_id=360497001]
+script = ExtResource("1_uuiuu")
+metadata/_custom_type_script = "uid://upsjslom8kcg"
+
+[node name="Whiteboard" type="Sprite2D" parent="." unique_id=100004017]
+texture_filter = 4
+position = Vector2(75, 66)
+texture = ExtResource("2_vybcb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=551554259]
+material = SubResource("CanvasItemMaterial_jkdy1")
+position = Vector2(27, 18)
+scale = Vector2(3, 3)
+centered = false
+
+[node name="RECT" parent="." unique_id=953779181 instance=ExtResource("2_dndyk")]
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 126.0
+offset_bottom = 117.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1963689542]
+offset_left = 27.0
+offset_top = 124.0
+offset_right = 123.0
+offset_bottom = 134.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=181593734]
+offset_left = 27.0
+offset_top = 124.0
+offset_right = 27.0
+offset_bottom = 134.0
+color = Color(1, 0, 0, 1)
+
+[node name="RECT2" parent="." unique_id=1028422146 instance=ExtResource("2_dndyk")]
+offset_left = 24.0
+offset_top = 121.0
+offset_right = 126.0
+offset_bottom = 137.0
+
+[node name="sound" type="AudioStreamPlayer2D" parent="." unique_id=1264672605]
+position = Vector2(65, 78)
+stream = ExtResource("4_vybcb")

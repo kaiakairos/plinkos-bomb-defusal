@@ -6,11 +6,15 @@ var source :float = 0.0
 var number :float = 0.0
 var targetNumber :float = 0.0
 
+var displayNumber :float = 0.0
+
 func _ready() -> void:
 	number = rand.randf_range(-40.0,40.0)
 	targetNumber =  (number + rand.randf_range(-15.0,15.0))
+	
+	displayNumber = number
 	$target.text = "%.1f" % targetNumber
-	$current.text = "%.1f" % number
+	$current.text = "%.1f" % displayNumber
 	
 	$dial/base.rotation = lerp_angle($dial/base.rotation, -source,1.0)
 	
@@ -33,7 +37,11 @@ func _process(delta: float) -> void:
 	$dial/base/DialShadow.rotation = $dial/base.rotation * -1
 	
 	number -= (before - $dial/base.rotation) * 0.5
-	var newText :String = "%.1f" % number
+	displayNumber = number
+	if OS.has_feature("expo"):
+		if abs(number - targetNumber) < 0.3:
+			displayNumber = targetNumber
+	var newText :String = "%.1f" % displayNumber
 	if newText != $current.text:
 		var basePitch :float = 0.6
 		if abs(targetNumber - number) < 1.0:

@@ -91,16 +91,24 @@ func _on_quit_button_pressed() -> void:
 ## CREDIT BUTTONS ##
 
 func _on_kaia_credit_button_pressed() -> void:
+	if OS.has_feature("expo"):
+		return
 	Saving.open_site("https://kaiakairos.net/")
 
 func _on_sage_credit_button_pressed() -> void:
+	if OS.has_feature("expo"):
+		return
 	Saving.open_site("https://staggernight.com/")
 
 func _on_jam_link_button_pressed() -> void:
+	if OS.has_feature("expo"):
+		return
 	Saving.open_site("https://itch.io/jam/mccgdc-fall-game-jam")
 
 
 func _on_jam_link_2_button_pressed() -> void:
+	if OS.has_feature("expo"):
+		return
 	Saving.open_site("https://itch.io/jam/20-second-game-jam-2025")
 
 

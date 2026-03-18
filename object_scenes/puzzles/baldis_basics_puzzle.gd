@@ -31,7 +31,12 @@ func generateMathPuzzles() -> void:
 			answer = number1 * number2
 			s = " x "
 	
-	if abs(answer) > 70:
+	if OS.has_feature("expo"):
+		if answer > 28 or answer < 0:
+			generateMathPuzzles() # if this is the expo version, we'll make it really easy
+			return
+	
+	if answer > 50 or answer < -20:
 		generateMathPuzzles() # reroll, keep the numbers small
 		return
 	
