@@ -91,7 +91,7 @@ func _input(event: InputEvent) -> void:
 	$ColorRect2.size.x = percentile * 96.0
 	if tilesLeft <= 0:
 		winPuzzle()
-
+		
 func getRemainingPixels() -> int:
 	var i :int = 0
 	for x in range(32):
